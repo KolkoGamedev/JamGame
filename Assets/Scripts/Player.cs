@@ -5,17 +5,14 @@ using System;
 
 public class Player : MonoBehaviour
 {
-    public static event Action<Player> OnHit = delegate { };
+    public static event Action<Player> PlayerHit = delegate { };
 
-    /*
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.CompareTag("Hazard"))
         {
-            OnHit(this);
+            PlayerHit(this);
             GetComponent<TrailRenderer>().Clear();
         }
     }
-    */
-
 }
