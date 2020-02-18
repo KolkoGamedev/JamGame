@@ -27,4 +27,6 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.AddForce(direction * shootPower);
     }
+
+    
 }
