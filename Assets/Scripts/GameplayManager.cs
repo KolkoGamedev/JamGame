@@ -16,8 +16,8 @@ public class GameplayManager : MonoBehaviour
 
     private void CheckForTeleport(Player player)
     {
-        if (--playerHealth < 0)
-            player.transform.position = _spawnPoint.transform.position;
+        if (--playerHealth > 0)
+            player.gameObject.transform.position = _spawnPoint.transform.position;
         else
             PlayerDeath();
     }

@@ -41,6 +41,12 @@ TextureImporter:
   - first:
       213: 6723950255771334470
     second: portal-animation_5
+  - first:
+      213: -360978193443679341
+    second: portal-animation_7
+  - first:
+      213: 599402855229962937
+    second: portal-animation_8
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -258,6 +264,69 @@ TextureImporter:
       bones: []
       spriteID: 647b5a2f125405d50800000000000000
       internalID: 6723950255771334470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: portal-animation_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 044a84c369d4a94e0800000000000000
+      internalID: -1974180178996714432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: portal-animation_7
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3939020ee3c8dfaf0800000000000000
+      internalID: -360978193443679341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: portal-animation_8
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ba365798b1815800800000000000000
+      internalID: 599402855229962937
       vertices: []
       indices: 
       edges: []
