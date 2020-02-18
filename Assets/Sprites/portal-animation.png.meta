@@ -1,22 +1,46 @@
 fileFormatVersion: 2
-guid: 8cab7e96133f6a744b8746f2228cfecb
+guid: c95134adb01d4404393b62704291f917
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8185252286816643056
-    second: walls_0
+      213: 5619931824651303384
+    second: portal-animation_0
   - first:
-      213: 4723250963254362342
-    second: walls_1
+      213: 6199124628554654796
+    second: portal-animation_1
   - first:
-      213: 2029603016695656400
-    second: walls_2
+      213: -4718916210989952812
+    second: portal-animation_2
   - first:
-      213: 8147275610191718606
-    second: walls_3
+      213: 8029380579213655771
+    second: portal-animation_3
   - first:
-      213: -24075806118037059
-    second: walls_4
+      213: -8173791134245842873
+    second: portal-animation_4
+  - first:
+      213: 4385288766483597942
+    second: portal-animation_5
+  - first:
+      213: -1974180178996714432
+    second: portal-animation_6
+  - first:
+      213: 2788184794993719824
+    second: portal-animation_0
+  - first:
+      213: -6724069133419570254
+    second: portal-animation_1
+  - first:
+      213: 1986227380332689271
+    second: portal-animation_2
+  - first:
+      213: 3676994407708244661
+    second: portal-animation_3
+  - first:
+      213: 3165842344653764110
+    second: portal-animation_4
+  - first:
+      213: 6723950255771334470
+    second: portal-animation_5
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -58,7 +82,7 @@ TextureImporter:
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 9
+  alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
@@ -113,7 +137,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: walls_0
+      name: portal-animation_0
       rect:
         serializedVersion: 2
         x: 0
@@ -127,14 +151,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 01817579964286e80800000000000000
-      internalID: -8185252286816643056
+      spriteID: 01afeb17c4f91b620800000000000000
+      internalID: 2788184794993719824
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walls_1
+      name: portal-animation_1
       rect:
         serializedVersion: 2
         x: 32
@@ -148,14 +172,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6e04cc9e9bb5c8140800000000000000
-      internalID: 4723250963254362342
+      spriteID: 2bb9b51bfbe4fa2a0800000000000000
+      internalID: -6724069133419570254
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walls_2
+      name: portal-animation_2
       rect:
         serializedVersion: 2
         x: 64
@@ -169,14 +193,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0dfa43db0399a2c10800000000000000
-      internalID: 2029603016695656400
+      spriteID: 77772e7674f709b10800000000000000
+      internalID: 1986227380332689271
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walls_3
+      name: portal-animation_3
       rect:
         serializedVersion: 2
         x: 96
@@ -190,14 +214,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ec86ea85000f01170800000000000000
-      internalID: 8147275610191718606
+      spriteID: 5ba3c88aeee470330800000000000000
+      internalID: 3676994407708244661
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walls_4
+      name: portal-animation_4
       rect:
         serializedVersion: 2
         x: 128
@@ -211,8 +235,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: db937a09e277aaff0800000000000000
-      internalID: -24075806118037059
+      spriteID: e063affc6d45feb20800000000000000
+      internalID: 3165842344653764110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: portal-animation_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 647b5a2f125405d50800000000000000
+      internalID: 6723950255771334470
       vertices: []
       indices: 
       edges: []
