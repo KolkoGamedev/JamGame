@@ -6,7 +6,6 @@ using System;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float shootPower = 200;
-
     private Vector3 _shootStartingPoint;
     private Vector3 _shootEndingPoint;
     private Rigidbody2D rb;
