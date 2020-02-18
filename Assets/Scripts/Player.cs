@@ -5,16 +5,13 @@ using System;
 
 public class Player : MonoBehaviour
 {
-    public static event Action OnDeath = delegate { };
-    public static event Action OnHit = delegate { };
+    public static event Action<Player> OnHit = delegate { };
 
-    private int _health = 3;
-
-    public void PlayerHit()
+    private void OnTriggerEnter(Collider other)
     {
-        if (--_health < 0)
-            OnDeath();
-        else
-            OnHit();
+        if(other.gameObject.CompareTag("Hazard"))
+        {
+            OnHit(this);
+        }
     }
 }
