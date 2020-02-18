@@ -25,7 +25,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Shoot(Vector3 direction)
     {
-        Debug.Log(direction * shootPower);
         rb.AddForce(direction * shootPower);
     }
 }
