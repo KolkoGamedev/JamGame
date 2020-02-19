@@ -5,13 +5,12 @@ using System;
 
 public class Medkit : MonoBehaviour
 {
-    public static event Action<int> OnHealed = delegate { };
-
+    [SerializeField] private int value = 1;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            OnHealed(1);
+            collision.gameObject.GetComponent<IHealable>().Heal(value);
             gameObject.SetActive(false);
         }
         

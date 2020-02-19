@@ -16,11 +16,11 @@ public class AudioManager : MonoBehaviour
     {
         AS = GetComponent<AudioSource>();
 
-        Player.PlayerHit += PlayHitSound;
-        Medkit.OnHealed += PlayHealSound;
+        PlayerHealth.OnHit += PlayHitSound;
+        PlayerHealth.OnHeal += PlayHealSound;
         PlayerMovement.OnShoot += PlayShootSound;
         PlayerMovement.OnWallHit += PlayWallHitSound;
-        Shield.OnShield += PlayShieldSound;
+        PlayerUtilities.OnShield += PlayShieldSound;
     }
 
     private void PlayHitSound(int value)
@@ -41,7 +41,7 @@ public class AudioManager : MonoBehaviour
     {
         AS.PlayOneShot(WallHitSound);
     }
-    private void PlayShieldSound(int value)
+    private void PlayShieldSound()
     {
         AS.PlayOneShot(ShieldSound);
     }

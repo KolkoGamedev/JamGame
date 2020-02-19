@@ -11,7 +11,7 @@ public class DamageDealer : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<Player>().DealDamage(Damage);
+            collision.gameObject.GetComponent<IDamagable>().TakeDamage(Damage);
             collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-1f,1f), Random.Range(0,1f)) * PushbackForce);
             
         }
