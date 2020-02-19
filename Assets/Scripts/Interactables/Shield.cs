@@ -1,14 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public class DamageDealer : MonoBehaviour
+public class Shield : MonoBehaviour
 {
+    public static event Action<int> OnShield = delegate { };
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<Player>().DealDamage(-1);
+            OnShield(1);
+            gameObject.SetActive(false);
         }
+
     }
 }
