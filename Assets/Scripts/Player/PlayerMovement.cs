@@ -5,6 +5,9 @@ using System;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public static event Action OnShoot = delegate { };
+    public static event Action OnWallHit = delegate { };
+
     [SerializeField] private float shootPower = 200;
     private Vector3 _shootStartingPoint;
     private Vector3 _shootEndingPoint;
@@ -25,7 +28,12 @@ public class PlayerMovement : MonoBehaviour
     private void Shoot(Vector3 direction)
     {
         rb.AddForce(direction * shootPower);
+        OnShoot();
     }
 
-    
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        OnWallHit();
+    }
+
 }

@@ -5,22 +5,16 @@ using System;
 
 public class GameplayManager : MonoBehaviour
 {
-    public static event Action PlayerDeath = delegate { };
     [SerializeField] private Transform _spawnPoint = null;
-    public int playerHealth = 3;
 
     private void Awake()
     {
-        Player.OnHit += CheckForTeleport;
+        Teleporter.OnTeleport += TeleportToSpawn;
     }
 
-    private void CheckForTeleport(Player player)
+    private void TeleportToSpawn(GameObject player)
     {
-        if (--playerHealth < 0)
-            player.transform.position = _spawnPoint.transform.position;
-        else
-            PlayerDeath();
+        player.gameObject.transform.position = _spawnPoint.transform.position;
+        player.GetComponent<TrailRenderer>().Clear();
     }
-
-    
 }
