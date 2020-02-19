@@ -8,6 +8,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip HealSound = null;
     [SerializeField] private AudioClip ShootSound = null;
     [SerializeField] private AudioClip WallHitSound = null;
+    [SerializeField] private AudioClip ShieldSound = null;
 
     private AudioSource AS;
 
@@ -19,6 +20,7 @@ public class AudioManager : MonoBehaviour
         Medkit.OnHealed += PlayHealSound;
         PlayerMovement.OnShoot += PlayShootSound;
         PlayerMovement.OnWallHit += PlayWallHitSound;
+        Shield.OnShield += PlayShieldSound;
     }
 
     private void PlayHitSound(int value)
@@ -38,5 +40,9 @@ public class AudioManager : MonoBehaviour
     private void PlayWallHitSound()
     {
         AS.PlayOneShot(WallHitSound);
+    }
+    private void PlayShieldSound(int value)
+    {
+        AS.PlayOneShot(ShieldSound);
     }
 }
