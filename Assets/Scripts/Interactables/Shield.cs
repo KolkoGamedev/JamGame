@@ -10,7 +10,8 @@ public class Shield : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.GetComponent<IShieldable>().Shield();
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
+            GetComponent<Dissolve>().StartDissolve();
         }
 
     }

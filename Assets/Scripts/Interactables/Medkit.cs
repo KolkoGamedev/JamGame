@@ -11,7 +11,8 @@ public class Medkit : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.GetComponent<IHealable>().Heal(value);
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
+            GetComponent<Dissolve>().StartDissolve();
         }
         
     }
