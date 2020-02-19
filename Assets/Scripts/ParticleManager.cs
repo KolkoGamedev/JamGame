@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class ParticleManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GameObject OnHitParticles = null;
+
+    private void Awake()
     {
-        
+        PlayerHealth.OnHit += SpawnOnHitParticles;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void SpawnOnHitParticles(int v)
     {
-        
+        GameObject particle = Instantiate(OnHitParticles, PlayerMovement.Instance.gameObject.transform.position, Quaternion.identity, null);
     }
+
 }

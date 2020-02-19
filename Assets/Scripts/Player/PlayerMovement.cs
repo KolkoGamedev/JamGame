@@ -5,6 +5,7 @@ using System;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public static PlayerMovement Instance = null;
     public static event Action OnShoot = delegate { };
     public static event Action OnWallHit = delegate { };
 
@@ -16,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
         rb = GetComponent<Rigidbody2D>();
         _mainCam = Camera.main;
     }
