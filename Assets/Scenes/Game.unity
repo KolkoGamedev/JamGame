@@ -4462,7 +4462,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3310de5e5ee2aa64d86be1e52a947822, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HitSound: {fileID: 0}
+  HitSound: {fileID: 8300000, guid: 5720defc2c990fb4e84cea15ed2abfa4, type: 3}
   HealSound: {fileID: 0}
   ShootSound: {fileID: 8300000, guid: 71bf977a61084154b94e5c4303255007, type: 3}
   WallHitSound: {fileID: 8300000, guid: f5ab7cdf78743784ebbf25e261ca0b65, type: 3}

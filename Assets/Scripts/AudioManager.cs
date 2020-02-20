@@ -26,7 +26,7 @@ public class AudioManager : MonoBehaviour
 
     private void PlayHitSound(int value)
     {
-        AS.PlayOneShot(HitSound);
+        AS.PlayOneShot(HitSound,0.2f);
     }
 
     private void PlayHealSound(int value)
