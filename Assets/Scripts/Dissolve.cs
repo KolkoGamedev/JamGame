@@ -6,9 +6,13 @@ public class Dissolve : MonoBehaviour
 {
     [SerializeField] private float DissolveTime = 0.5f;
     private Material dissMat;
+    private Rigidbody2D rb;
 
     private void Awake()
     {
+        if (gameObject.CompareTag("Player"))
+            rb = GetComponent<Rigidbody2D>();
+
         dissMat = GetComponent<SpriteRenderer>().material;
     }
 
@@ -32,7 +36,7 @@ public class Dissolve : MonoBehaviour
         while (time >= 0)
         {
             time -= Time.deltaTime;
-<<<<<<< HEAD
+
             dissMat.SetFloat("_Fade", time);
             yield return null;
         }
@@ -44,8 +48,7 @@ public class Dissolve : MonoBehaviour
         while (time <= DissolveTime)
         {
             time += Time.deltaTime;
-=======
->>>>>>> parent of bfd624f... Merge branch 'dev' of https://github.com/KolkoGamedev/JamGame into dev
+
             dissMat.SetFloat("_Fade", time);
             yield return null;
         }
@@ -59,5 +62,11 @@ public class Dissolve : MonoBehaviour
     public void StartPlayerDissolve()
     {
         StartCoroutine(PlayerDissolve());
+    }
+    public void StartPlayerReverseDissolve(GameObject go)
+    {
+        StartCoroutine(PlayerReverseDissolve());
+        rb.simulated = true;
+        rb.gravityScale = 1;
     }
 }
