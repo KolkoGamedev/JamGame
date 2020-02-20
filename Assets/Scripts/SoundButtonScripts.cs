@@ -10,27 +10,22 @@ public class SoundButtonScripts : MonoBehaviour
     public Button Button;
     public Sprite Enabled;
     public Sprite Disabled;
-    private int counter = 0;
 
-   
-
-
+    private bool changer = false;
 
     private void Start()
     {
         Button = GetComponent<Button>();
         Button.GetComponent<Image>().sprite = Enabled;
-
-     
     }
 
     public void ChangeButton()
     {
-        counter++;
-        if(counter%2 == 1)
+        if(changer == false)
         {
             OnMute(); 
             Button.image.overrideSprite = Disabled;
+            changer = true;
             //muzyka wylaczona
             
         }
@@ -39,6 +34,7 @@ public class SoundButtonScripts : MonoBehaviour
             Button.image.overrideSprite = Enabled;
             //muzyka wlaczona
             UnMute();
+            changer = false;
             
         }
     }
