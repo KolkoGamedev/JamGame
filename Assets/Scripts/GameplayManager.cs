@@ -23,8 +23,6 @@ public class GameplayManager : MonoBehaviour
 
     private void ChangeLightSize()
     {
-        //Animater
-    }
-
+        //Animate
     }
 }
