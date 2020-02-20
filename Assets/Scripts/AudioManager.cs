@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class AudioManager : MonoBehaviour
 {   
@@ -35,7 +36,8 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] private AudioSource AS = null;
 
-  
+
+    
 
     private void Awake()
     {
@@ -46,7 +48,10 @@ public class AudioManager : MonoBehaviour
         PlayerUtilities.OnShield += PlayShieldSound;
         Dissolve.OnDissolve += PlayTeleportSound;
         ClickableButton.OnButtonClick += PlayOnButtonClickSound;
-        
+        SoundButtonScripts.OnMute += MuteEffects;
+        SoundButtonScripts.UnMute += UnMuteEffects;
+
+
     }
 
     private void PlayHitSound(int value)
@@ -74,7 +79,6 @@ public class AudioManager : MonoBehaviour
 
     private void PlayTeleportSound()
     {
-
         AS.PlayOneShot(TeleportSound,TeleportVolume);
     }
 
@@ -83,14 +87,17 @@ public class AudioManager : MonoBehaviour
         AS.PlayOneShot(OnButtonClickSound,OnButtonClickVolume);
     }
 
-    private void Mute()
+    private void MuteEffects()
     {
-        AudioListener.volume = 0;
+        Debug.Log("DZIALA");
+        AS.mute = true;
+        
+        
     }
 
-    private void UnMute()
+    private void UnMuteEffects()
     {
-        AudioListener.volume = 1;
+        AS.mute = false;
     }
 
 }
