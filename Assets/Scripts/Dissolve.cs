@@ -35,8 +35,8 @@ public class Dissolve : MonoBehaviour
 
         while (time >= 0)
         {
-            dissolvePower -= Time.deltaTime;
-            dissMat.SetFloat("_Fade", dissolvePower);
+            time -= Time.deltaTime;
+            dissMat.SetFloat("_Fade", time);
             yield return null;
         }
     }
