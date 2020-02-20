@@ -12,7 +12,8 @@ public class BlackHole : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.GetComponent<Dissolve>().PlayerDissolve();
-           // OnTeleport(collision.gameObject);
+            
+            OnTeleport(collision.gameObject);
         }
     }
 }
