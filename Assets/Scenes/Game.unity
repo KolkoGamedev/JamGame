@@ -280,7 +280,7 @@ TilemapRenderer:
   m_SortOrder: 0
   m_Mode: 1
   m_DetectChunkCullingBounds: 0
-  m_MaskInteraction: 1
+  m_MaskInteraction: 0
 --- !u!1839735485 &245898431
 Tilemap:
   m_ObjectHideFlags: 0
@@ -5177,7 +5177,7 @@ TilemapRenderer:
   m_SortOrder: 0
   m_Mode: 1
   m_DetectChunkCullingBounds: 0
-  m_MaskInteraction: 1
+  m_MaskInteraction: 0
 --- !u!1839735485 &2023835542
 Tilemap:
   m_ObjectHideFlags: 0
