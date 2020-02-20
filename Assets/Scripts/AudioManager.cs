@@ -51,7 +51,7 @@ public class AudioManager : MonoBehaviour
         SoundButtonScripts.OnMute += MuteEffects;
         SoundButtonScripts.UnMute += UnMuteEffects;
 
-
+        DontDestroyOnLoad(gameObject);
     }
 
     private void PlayHitSound(int value)
