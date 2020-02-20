@@ -10,7 +10,6 @@ public class Dissolve : MonoBehaviour
     private void Awake()
     {
         dissMat = GetComponent<SpriteRenderer>().material;
-        
     }
 
     private IEnumerator RunDissolve()
@@ -25,23 +24,26 @@ public class Dissolve : MonoBehaviour
         }
         gameObject.SetActive(false);
     }
-    public void PlayerDissolve()
+
+    public IEnumerator PlayerDissolve()
     {
         float time = DissolveTime;
 
         while (time >= 0)
         {
             time -= Time.deltaTime;
-            Debug.Log(time);
             dissMat.SetFloat("_Fade", time);
-                        
+            yield return null;
         }
-        //dissMat.SetFloat("_Fade", 1);
     }
  
     public void StartDissolve()
     {
         StartCoroutine(RunDissolve());
+    }
 
+    public void StartPlayerDissolve()
+    {
+        StartCoroutine(PlayerDissolve());
     }
 }
