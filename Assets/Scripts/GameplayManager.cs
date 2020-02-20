@@ -6,7 +6,6 @@ using System;
 public class GameplayManager : MonoBehaviour
 {
     [SerializeField] private Transform _spawnPoint = null;
-    [SerializeField] private Transform PlayerLight = null;
 
     private void Awake()
     {

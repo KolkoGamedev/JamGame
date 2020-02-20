@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LightManager : MonoBehaviour
 {
-    [SerializeField] private GameObject Mask;
+    [SerializeField] private GameObject Mask = null;
     private Animator playerAnimator;
 
     private void Awake()
