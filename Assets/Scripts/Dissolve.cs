@@ -61,6 +61,8 @@ public class Dissolve : MonoBehaviour
 
     public void StartPlayerDissolve()
     {
+        rb.simulated = false;
+        rb.gravityScale = 0;
         StartCoroutine(PlayerDissolve());
     }
     public void StartPlayerReverseDissolve(GameObject go)

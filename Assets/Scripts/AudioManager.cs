@@ -14,8 +14,6 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        //AS = GetComponent<AudioSource>();
-
         PlayerHealth.OnHit += PlayHitSound;
         PlayerHealth.OnHeal += PlayHealSound;
         PlayerMovement.OnShoot += PlayShootSound;

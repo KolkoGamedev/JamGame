@@ -19,11 +19,6 @@ public class BlackHole : MonoBehaviour
 
             playerDissolve.StartPlayerDissolve();
             StartCoroutine(InvokeTeleport(collision.gameObject, 1f));
-
-            collision.gameObject.GetComponent<Dissolve>().PlayerDissolve();
-            
-            OnTeleport(collision.gameObject);
-
         }
     }
 
