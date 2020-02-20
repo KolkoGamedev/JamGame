@@ -21,8 +21,8 @@ public class GameplayManager : MonoBehaviour
         player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
     }
 
-    private void ChangeLightSize()
+    private void ChangeLightSize(GameObject player)
     {
-        //Animate
+        player.GetComponent<PlayerUtilities>().ChangeMaskSize();
     }
 }
