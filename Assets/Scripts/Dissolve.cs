@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Dissolve : MonoBehaviour
 {
+    public static event Action OnDissolve = delegate { };
+
     [SerializeField] private float DissolveTime = 0.5f;
     private Material dissMat;
     private Rigidbody2D rb;
@@ -31,6 +34,7 @@ public class Dissolve : MonoBehaviour
 
     public IEnumerator PlayerDissolve()
     {
+        OnDissolve();
         float time = DissolveTime;
 
         while (time >= 0)
