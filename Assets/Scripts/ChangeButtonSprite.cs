@@ -13,10 +13,13 @@ public class ChangeButtonSprite : MonoBehaviour
         button.GetComponent<Image>().sprite = BeforeHoover;
     }
 
-    private void OnMouseOver()
+    public void ChangeToDefaultSprite()
     {
-        button = GetComponent<Button>();
-        button.GetComponent<Image>().sprite = WhileHoover;
-        //button.OnSelect.
+        button.image.overrideSprite = BeforeHoover;
+    }
+
+    public void ChangeToBrokenSprite()
+    {
+        button.image.overrideSprite = WhileHoover;
     }
 }
