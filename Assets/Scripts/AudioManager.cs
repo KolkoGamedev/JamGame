@@ -10,17 +10,18 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip WallHitSound = null;
     [SerializeField] private AudioClip ShieldSound = null;
 
-    private AudioSource AS;
+    [SerializeField] private AudioSource AS;
 
     private void Awake()
     {
-        AS = GetComponent<AudioSource>();
+        //AS = GetComponent<AudioSource>();
 
         PlayerHealth.OnHit += PlayHitSound;
         PlayerHealth.OnHeal += PlayHealSound;
         PlayerMovement.OnShoot += PlayShootSound;
         PlayerMovement.OnWallHit += PlayWallHitSound;
         PlayerUtilities.OnShield += PlayShieldSound;
+        
     }
 
     private void PlayHitSound(int value)
@@ -39,7 +40,7 @@ public class AudioManager : MonoBehaviour
     }
     private void PlayWallHitSound()
     {
-        AS.PlayOneShot(WallHitSound);
+        AS.PlayOneShot(WallHitSound,0.1f);
     }
     private void PlayShieldSound()
     {
