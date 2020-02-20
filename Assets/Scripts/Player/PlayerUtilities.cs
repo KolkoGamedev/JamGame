@@ -9,6 +9,13 @@ public class PlayerUtilities : MonoBehaviour, IShieldable
     public static event Action OnUnShield = delegate { };
     public bool isShielded { get { return shielded; } set { shielded = value; } }
     [SerializeField] private bool shielded = false;
+    private Mask playerMask;
+    private Animator playerAnimator;
+    void Awake()
+    {
+        playerMask = GetComponentInChildren<Mask>();
+        playerAnimator = playerMask.GetComponent<Animator>();
+    }
 
     public void Shield()
     {
@@ -27,6 +34,10 @@ public class PlayerUtilities : MonoBehaviour, IShieldable
             OnUnShield();
         }
         
+    }
+    public void ChangeMaskSize()
+    {
+        playerAnimator.SetBool("ChangeSize", true);
     }
 }
 
