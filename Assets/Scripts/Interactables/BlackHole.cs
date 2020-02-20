@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class Teleporter : MonoBehaviour
+public class BlackHole : MonoBehaviour
 {
     public static event Action<GameObject> OnTeleport = delegate { };
 
@@ -11,7 +11,8 @@ public class Teleporter : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            OnTeleport(collision.gameObject);
+            collision.gameObject.GetComponent<Dissolve>().PlayerDissolve();
+           // OnTeleport(collision.gameObject);
         }
     }
 }

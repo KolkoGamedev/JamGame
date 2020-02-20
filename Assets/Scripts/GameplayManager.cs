@@ -9,12 +9,14 @@ public class GameplayManager : MonoBehaviour
 
     private void Awake()
     {
-        Teleporter.OnTeleport += TeleportToSpawn;
+        BlackHole.OnTeleport += TeleportToSpawn;
     }
 
     private void TeleportToSpawn(GameObject player)
-    {
+    { 
+        
         player.gameObject.transform.position = _spawnPoint.transform.position;
         player.GetComponent<TrailRenderer>().Clear();
+        player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
     }
 }
