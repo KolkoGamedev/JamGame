@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class OnWallDestroy : MonoBehaviour
 {
@@ -8,10 +9,8 @@ public class OnWallDestroy : MonoBehaviour
     public Sprite spr1;
     public Sprite spr2;
     public Sprite spr3;
-    public void Start()
-    {
-        
-    }
+    public static event Action OnWallAttack = delegate { };
+    
     public void OnAttackByPlayer()
     {
         WallLifes--;
