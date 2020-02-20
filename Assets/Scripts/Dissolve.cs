@@ -45,6 +45,5 @@ public class Dissolve : MonoBehaviour
     public void StartPlayerDissolve()
     {
         StartCoroutine(PlayerDissolve());
-
     }
 }
