@@ -4546,6 +4546,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnPoint: {fileID: 2113742579}
+  PlayerLight: {fileID: 1632403962}
 --- !u!4 &710750435
 Transform:
   m_ObjectHideFlags: 0

@@ -14,7 +14,8 @@ public class Portal : MonoBehaviour
         {
             OnLevelComplete();
             collision.gameObject.GetComponent<Dissolve>().StartPlayerDissolve();
-            SceneManager.LoadScene(levelToLoad);
+           
+            //SceneManager.LoadScene(levelToLoad);
         }
     }
 }
