@@ -25,9 +25,23 @@ public class Dissolve : MonoBehaviour
         }
         gameObject.SetActive(false);
     }
+    public void PlayerDissolve()
+    {
+        float time = DissolveTime;
 
+        while (time >= 0)
+        {
+            time -= Time.deltaTime;
+            Debug.Log(time);
+            dissMat.SetFloat("_Fade", time);
+                        
+        }
+        //dissMat.SetFloat("_Fade", 1);
+    }
+ 
     public void StartDissolve()
     {
         StartCoroutine(RunDissolve());
+
     }
 }
