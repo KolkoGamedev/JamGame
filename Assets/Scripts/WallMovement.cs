@@ -5,13 +5,11 @@ using UnityEngine;
 public class WallMovement : MonoBehaviour
 {
     
-    [SerializeField] private float speed = 0.01f;
-    private float x;
-    private float y;
+    [SerializeField] private float speed = 100f;
+    
     private void Awake()
     {
-        x = Random.Range(-1f, 1f);
-        y = Random.Range(-1f, 1f);
+        
     }
 
 
@@ -19,8 +17,8 @@ public class WallMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += new Vector3(x * speed, y*speed, 0);
-        
+        Vector3 movement = gameObject.transform.rotation * Vector3.up;
+        transform.position += movement * speed*Time.deltaTime;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
