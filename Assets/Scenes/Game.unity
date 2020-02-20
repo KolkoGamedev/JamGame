@@ -4639,6 +4639,7 @@ MonoBehaviour:
   ShootSound: {fileID: 8300000, guid: 71bf977a61084154b94e5c4303255007, type: 3}
   WallHitSound: {fileID: 8300000, guid: f5ab7cdf78743784ebbf25e261ca0b65, type: 3}
   ShieldSound: {fileID: 0}
+  TeleportSound: {fileID: 8300000, guid: 693fb7cfb18c343459deb304b9641781, type: 3}
   AS: {fileID: 519420035}
 --- !u!4 &1591104982
 Transform:

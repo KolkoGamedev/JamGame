@@ -9,6 +9,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip ShootSound = null;
     [SerializeField] private AudioClip WallHitSound = null;
     [SerializeField] private AudioClip ShieldSound = null;
+    [SerializeField] private AudioClip TeleportSound = null;
 
     [SerializeField] private AudioSource AS;
 
@@ -19,6 +20,7 @@ public class AudioManager : MonoBehaviour
         PlayerMovement.OnShoot += PlayShootSound;
         PlayerMovement.OnWallHit += PlayWallHitSound;
         PlayerUtilities.OnShield += PlayShieldSound;
+        Dissolve.OnDissolve += PlayTeleportSound;
         
     }
 
@@ -43,5 +45,11 @@ public class AudioManager : MonoBehaviour
     private void PlayShieldSound()
     {
         AS.PlayOneShot(ShieldSound);
+    }
+
+    private void PlayTeleportSound()
+    {
+
+        AS.PlayOneShot(TeleportSound,0.4f);
     }
 }
