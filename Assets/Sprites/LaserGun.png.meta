@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+guid: 018a3b72ecaaf8b48b80e2149e5eedd3
+=======
 guid: 37955bd5fb8b930429454ccc5cfb83b4
+>>>>>>> parent of bfd624f... Merge branch 'dev' of https://github.com/KolkoGamedev/JamGame into dev
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}

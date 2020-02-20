@@ -6,9 +6,13 @@ public class Dissolve : MonoBehaviour
 {
     [SerializeField] private float DissolveTime = 0.5f;
     private Material dissMat;
+    private Rigidbody2D rb;
 
     private void Awake()
     {
+        if (gameObject.CompareTag("Player"))
+            rb = GetComponent<Rigidbody2D>();
+
         dissMat = GetComponent<SpriteRenderer>().material;
     }
 
@@ -32,6 +36,19 @@ public class Dissolve : MonoBehaviour
         while (time >= 0)
         {
             time -= Time.deltaTime;
+
+            dissMat.SetFloat("_Fade", time);
+            yield return null;
+        }
+    }
+    private IEnumerator PlayerReverseDissolve()
+    {
+        float time = 0f;
+
+        while (time <= DissolveTime)
+        {
+            time += Time.deltaTime;
+
             dissMat.SetFloat("_Fade", time);
             yield return null;
         }
@@ -44,6 +61,14 @@ public class Dissolve : MonoBehaviour
 
     public void StartPlayerDissolve()
     {
+        rb.simulated = false;
+        rb.gravityScale = 0;
         StartCoroutine(PlayerDissolve());
+    }
+    public void StartPlayerReverseDissolve(GameObject go)
+    {
+        StartCoroutine(PlayerReverseDissolve());
+        rb.simulated = true;
+        rb.gravityScale = 1;
     }
 }
