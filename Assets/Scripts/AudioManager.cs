@@ -10,8 +10,11 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip WallHitSound = null;
     [SerializeField] private AudioClip ShieldSound = null;
     [SerializeField] private AudioClip TeleportSound = null;
+    [SerializeField] private AudioClip OnButtonClickSound = null;
 
-    [SerializeField] private AudioSource AS;
+    [SerializeField] private AudioSource AS = null;
+
+  
 
     private void Awake()
     {
@@ -21,6 +24,7 @@ public class AudioManager : MonoBehaviour
         PlayerMovement.OnWallHit += PlayWallHitSound;
         PlayerUtilities.OnShield += PlayShieldSound;
         Dissolve.OnDissolve += PlayTeleportSound;
+        ClickableButton.OnButtonClick += PlayOnButtonClickSound;
         
     }
 
@@ -52,4 +56,15 @@ public class AudioManager : MonoBehaviour
 
         AS.PlayOneShot(TeleportSound,0.4f);
     }
+
+    private void PlayOnButtonClickSound()
+    {
+        AS.PlayOneShot(OnButtonClickSound);
+    }
+
+    private void Mute()
+    {
+        AudioListener.volume = 0;
+    }
+
 }
