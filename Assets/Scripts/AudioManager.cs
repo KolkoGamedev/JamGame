@@ -31,7 +31,7 @@ public class AudioManager : MonoBehaviour
 
     private void PlayHealSound(int value)
     {
-        AS.PlayOneShot(HealSound);
+        AS.PlayOneShot(HealSound,0.1f);
     }
 
     private void PlayShootSound()
@@ -44,7 +44,7 @@ public class AudioManager : MonoBehaviour
     }
     private void PlayShieldSound()
     {
-        AS.PlayOneShot(ShieldSound);
+        AS.PlayOneShot(ShieldSound,0.1f);
     }
 
     private void PlayTeleportSound()
