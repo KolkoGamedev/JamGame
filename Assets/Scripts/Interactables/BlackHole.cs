@@ -6,14 +6,26 @@ using System;
 public class BlackHole : MonoBehaviour
 {
     public static event Action<GameObject> OnTeleport = delegate { };
+    private Dissolve playerDissolve;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<Dissolve>().PlayerDissolve();
-            
-            OnTeleport(collision.gameObject);
+            if (!playerDissolve)
+            {
+                playerDissolve = collision.gameObject.GetComponent<Dissolve>();
+            }
+
+            playerDissolve.StartPlayerDissolve();
+            StartCoroutine(InvokeTeleport(collision.gameObject, 1f));
         }
+    }
+
+    private IEnumerator InvokeTeleport(GameObject go, float time)
+    {
+        yield return new WaitForSeconds(time);
+        OnTeleport(go);
+        playerDissolve.StartPlayerReverseDissolve(go);
     }
 }
