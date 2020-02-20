@@ -3,14 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
-{
+{   
     [SerializeField] private AudioClip HitSound = null;
+    [Range(0.0f, 1.0f)]
+    [SerializeField] private float HitVolume;
+
     [SerializeField] private AudioClip HealSound = null;
+    [Range(0.0f, 1.0f)]
+    [SerializeField] private float HealVolume;
+
     [SerializeField] private AudioClip ShootSound = null;
+    [Range(0.0f, 1.0f)]
+    [SerializeField] private float ShootVolume;
+
     [SerializeField] private AudioClip WallHitSound = null;
+    [Range(0.0f, 1.0f)]
+    [SerializeField] private float WallHitVolume;
+
     [SerializeField] private AudioClip ShieldSound = null;
+    [Range(0.0f, 1.0f)]
+    [SerializeField] private float ShieldVolume;
+
     [SerializeField] private AudioClip TeleportSound = null;
+    [Range(0.0f, 1.0f)]
+    [SerializeField] private float TeleportVolume;
+
     [SerializeField] private AudioClip OnButtonClickSound = null;
+    [Range(0.0f, 1.0f)]
+    [SerializeField] private float OnButtonClickVolume;
+
 
     [SerializeField] private AudioSource AS = null;
 
@@ -30,41 +51,46 @@ public class AudioManager : MonoBehaviour
 
     private void PlayHitSound(int value)
     {
-        AS.PlayOneShot(HitSound,0.2f);
+        AS.PlayOneShot(HitSound,HitVolume);
     }
 
     private void PlayHealSound(int value)
     {
-        AS.PlayOneShot(HealSound,0.1f);
+        AS.PlayOneShot(HealSound,HealVolume);
     }
 
     private void PlayShootSound()
     {
-        AS.PlayOneShot(ShootSound);
+        AS.PlayOneShot(ShootSound,ShootVolume);
     }
     private void PlayWallHitSound()
     {
-        AS.PlayOneShot(WallHitSound,0.1f);
+        AS.PlayOneShot(WallHitSound,WallHitVolume);
     }
     private void PlayShieldSound()
     {
-        AS.PlayOneShot(ShieldSound,0.1f);
+        AS.PlayOneShot(ShieldSound,ShieldVolume);
     }
 
     private void PlayTeleportSound()
     {
 
-        AS.PlayOneShot(TeleportSound,0.4f);
+        AS.PlayOneShot(TeleportSound,TeleportVolume);
     }
 
     private void PlayOnButtonClickSound()
     {
-        AS.PlayOneShot(OnButtonClickSound);
+        AS.PlayOneShot(OnButtonClickSound,OnButtonClickVolume);
     }
 
     private void Mute()
     {
         AudioListener.volume = 0;
+    }
+
+    private void UnMute()
+    {
+        AudioListener.volume = 1;
     }
 
 }
