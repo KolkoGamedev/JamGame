@@ -11,7 +11,6 @@ public class GameplayManager : MonoBehaviour
     private void Awake()
     {
         BlackHole.OnTeleport += TeleportToSpawn;
-        Portal.OnLevelComplete += ChangeLightSize;
     }
 
     private void TeleportToSpawn(GameObject player)
@@ -21,8 +20,5 @@ public class GameplayManager : MonoBehaviour
         player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
     }
 
-    private void ChangeLightSize(GameObject player)
-    {
-        player.GetComponent<PlayerUtilities>().ChangeMaskSize();
-    }
+
 }
