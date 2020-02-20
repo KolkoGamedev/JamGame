@@ -45,7 +45,7 @@ public class Dissolve : MonoBehaviour
     {
         float time = 0f;
 
-        while (time <= DissolveTime)
+        while (time <= 1)
         {
             time += Time.deltaTime;
 
