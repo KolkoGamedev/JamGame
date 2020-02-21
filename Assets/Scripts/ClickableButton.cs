@@ -18,8 +18,7 @@ public class ClickableButton : MonoBehaviour
             {
                 isPushed = true;
                 OnButtonClick();
-
-                transform.localPosition = new Vector3(0, -0.1f, 0);
+                transform.GetChild(1).transform.localPosition = new Vector3(0, -0.1f, 0);
 
                 if (ToInteract != null)
                 ToInteract.GetComponent<IInteractable>().Act();
@@ -30,6 +29,6 @@ public class ClickableButton : MonoBehaviour
 }
 
 public interface IInteractable
-{
+{    
     void Act();
 }
