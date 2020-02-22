@@ -43,9 +43,17 @@ public class PlayerHealth : MonoBehaviour, IHealable, IDamagable
         if (health <= 0)
         {
             OnDie();
+            playerDeath();
         }
             
     }
+
+    private void playerDeath()
+    {
+        GetComponent<Rigidbody2D>().simulated = false;
+        GetComponent<TrailRenderer>().Clear();
+    }
+
     private void OnDestroy()
     {
         OnHeal = delegate { };
@@ -54,6 +62,8 @@ public class PlayerHealth : MonoBehaviour, IHealable, IDamagable
         OnDie = delegate { };
     }
 }
+
+
 
 public interface IDamagable
 {

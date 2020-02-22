@@ -8,7 +8,7 @@ public class DestroyableWall : MonoBehaviour
     [SerializeField] private int WallLifes = 3;
     [SerializeField] private List<Sprite> Sprites = null;
 
-    public static event Action OnWallAttack = delegate { };
+    public static event Action<int, GameObject> OnWallAttack = delegate { };
     private SpriteRenderer sr;
 
     private void Awake()
@@ -26,13 +26,13 @@ public class DestroyableWall : MonoBehaviour
     }
     private Sprite Hit()
     {
-        return Sprites[Sprites.Count - WallLifes];
+        return Sprites[WallLifes];
     }
 
     private void Damaged()
     {
         WallLifes--;
-        OnWallAttack();
+        OnWallAttack(WallLifes, gameObject);
         if(WallLifes == 0)
         {
             gameObject.SetActive(false);

@@ -71,7 +71,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7705593239404432061, guid: b0b541d49cd6a1b438637367655efc8f,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -122,8 +122,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 339c9f680c8d161448ca7fc82722d77e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WallLifes: 4
+  WallLifes: 3
   Sprites:
-  - {fileID: 21300000, guid: 30ac3f0b68bdbd445bf0ddf856472055, type: 3}
-  - {fileID: 21300000, guid: cbdf29ec5c23c924f9faa251db4d6b8d, type: 3}
   - {fileID: 21300000, guid: abac58cdcb1acf44898fa039c4ed27d5, type: 3}
+  - {fileID: 21300000, guid: cbdf29ec5c23c924f9faa251db4d6b8d, type: 3}
+  - {fileID: 21300000, guid: 30ac3f0b68bdbd445bf0ddf856472055, type: 3}

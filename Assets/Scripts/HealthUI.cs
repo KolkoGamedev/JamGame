@@ -9,13 +9,12 @@ public class HealthUI : MonoBehaviour
     [SerializeField] private Sprite unshieldedHeart = null;
 
     private Image[] HeartImgs = null;
-
-    int heartAmount;
+    private int heartIndex;
 
     private void Awake()
     {
         HeartImgs = GetComponentsInChildren<Image>();
-        heartAmount = HeartImgs.Length-1;
+        heartIndex = HeartImgs.Length-1;
 
         PlayerHealth.OnHit += RemoveHeart;
         PlayerUtilities.OnShield += ShieldHeart;
@@ -24,18 +23,19 @@ public class HealthUI : MonoBehaviour
 
     private void RemoveHeart(int value)
     {
+        if(heartIndex >= 0)
         for(int i = 0; i < value; i++)
         {
-            HeartImgs[heartAmount--].gameObject.SetActive(false);
+            HeartImgs[heartIndex--].gameObject.SetActive(false);
         }
     }
     private void ShieldHeart()
     {
-        HeartImgs[heartAmount].sprite = shieldedHeart;
+        HeartImgs[heartIndex].sprite = shieldedHeart;
     }
 
     private void UnshieldHeart()
     {
-        HeartImgs[heartAmount].sprite = unshieldedHeart;
+        HeartImgs[heartIndex].sprite = unshieldedHeart;
     }
 }

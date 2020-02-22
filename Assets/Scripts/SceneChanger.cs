@@ -19,7 +19,7 @@ public class SceneChanger : MonoBehaviour
 
     public void InvokeLoseScreen()
     {
-        Invoke("LoadLoseScreen", 1f);
+        Invoke("LoadLoseScreen", 1.5f);
     }
     private void LoadLoseScreen()
     {
