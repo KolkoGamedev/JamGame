@@ -37,7 +37,10 @@ public class PlayerHealth : MonoBehaviour, IHealable, IDamagable
             playerShield.UnShield();
 
         if (health <= 0)
+        {
             OnDie();
+        }
+            
     }
     private void OnDestroy()
     {

@@ -5,7 +5,9 @@ using UnityEngine.UI;
 
 public class HealthUI : MonoBehaviour
 {
-    [SerializeField] private Sprite shieldedHeart;
+    [SerializeField] private Sprite shieldedHeart = null;
+    [SerializeField] private Sprite unshieldedHeart = null;
+
     private Image[] HeartImgs = null;
 
     int heartAmount;
@@ -17,6 +19,7 @@ public class HealthUI : MonoBehaviour
 
         PlayerHealth.OnHit += RemoveHeart;
         PlayerUtilities.OnShield += ShieldHeart;
+        PlayerUtilities.OnUnShield += UnshieldHeart;
     }
 
     private void RemoveHeart(int value)
@@ -29,5 +32,10 @@ public class HealthUI : MonoBehaviour
     private void ShieldHeart()
     {
         HeartImgs[heartAmount].sprite = shieldedHeart;
+    }
+
+    private void UnshieldHeart()
+    {
+        HeartImgs[heartAmount].sprite = unshieldedHeart;
     }
 }

@@ -6,15 +6,19 @@ public class LightManager : MonoBehaviour
 {
     [SerializeField] private GameObject Mask = null;
     private Animator playerAnimator;
+    private bool isChanged = false;
 
     private void Awake()
     {
         Portal.OnLevelComplete += ChangeLightSize;
+        PlayerHealth.OnDie += ChangeLightSize;
         playerAnimator = Mask.GetComponent<Animator>();
     }
 
     public void ChangeLightSize()
     {
-        playerAnimator.SetBool("ChangeSize", true);
+        isChanged = !isChanged;
+
+        playerAnimator.SetBool("ChangeSize", isChanged);
     }
 }
