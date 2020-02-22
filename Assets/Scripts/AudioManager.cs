@@ -47,6 +47,8 @@ public class AudioManager : MonoBehaviour
         SetupSounds();
         SceneManager.sceneLoaded += SceneLoaded;
 
+        
+
         DontDestroyOnLoad(gameObject);
     }
     private void SceneLoaded(Scene x, LoadSceneMode l)

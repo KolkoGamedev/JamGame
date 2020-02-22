@@ -34,7 +34,11 @@ public class PlayerHealth : MonoBehaviour, IHealable, IDamagable
             health -= value;
         }  
         else
+        {
             playerShield.UnShield();
+            OnHit(0);
+        }
+            
 
         if (health <= 0)
         {
