@@ -23,4 +23,9 @@ public class Portal : MonoBehaviour
     {
         SceneManager.LoadScene(levelToLoad);
     }
+
+    private void OnDestroy()
+    {
+        OnLevelComplete = delegate { };
+    }
 }

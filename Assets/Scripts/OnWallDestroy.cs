@@ -19,7 +19,6 @@ public class OnWallDestroy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("collision");
             OnAttackByPlayer();
         }
     }

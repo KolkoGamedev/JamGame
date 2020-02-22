@@ -6,10 +6,19 @@ using System;
 public class GameplayManager : MonoBehaviour
 {
     [SerializeField] private Transform _spawnPoint = null;
+    [SerializeField] private GameObject AudioManagerPrefab = null;
 
     private void Awake()
     {
         BlackHole.OnTeleport += TeleportToSpawn;
+    }
+
+    private void Start()
+    {
+        if(FindObjectOfType<AudioManager>() == null)
+        {
+            Instantiate(AudioManagerPrefab, Vector3.zero, Quaternion.identity);
+        }
     }
 
     private void TeleportToSpawn(GameObject player)

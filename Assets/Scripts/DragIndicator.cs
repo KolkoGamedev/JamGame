@@ -12,6 +12,7 @@ public class DragIndicator : MonoBehaviour
     private Vector3 _startPositon;
     private Vector3 _endPosition;
     private Vector3 _camOffset = new Vector3(0, 0, 10);
+
     private void Awake()
     {
         _lr = GetComponent<LineRenderer>();
@@ -21,6 +22,7 @@ public class DragIndicator : MonoBehaviour
         _lr.numCapVertices = 10;
         _lr.enabled = false;
     }
+
     // Update is called once per frame
     void Update()
     {
@@ -44,5 +46,10 @@ public class DragIndicator : MonoBehaviour
 
             OnDragFinish((_startPositon - _endPosition));
         }
+    }
+
+    private void OnDestroy()
+    {
+        OnDragFinish = delegate { };
     }
 }

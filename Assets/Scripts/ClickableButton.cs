@@ -5,7 +5,7 @@ using System;
 
 public class ClickableButton : MonoBehaviour
 {
-    [SerializeField] private GameObject ToInteract;
+    [SerializeField] private GameObject ToInteract = null;
     public static event Action OnButtonClick = delegate { };
 
     private bool isPushed = false;
@@ -25,6 +25,10 @@ public class ClickableButton : MonoBehaviour
             }
         }
 
+    }
+    private void OnDestroy()
+    {
+        OnButtonClick = delegate { };
     }
 }
 

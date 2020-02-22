@@ -28,7 +28,11 @@ public class PlayerUtilities : MonoBehaviour, IShieldable
         }
         
     }
-
+    private void OnDestroy()
+    {
+        OnShield = delegate { };
+        OnUnShield = delegate { };
+    }
 }
 
 

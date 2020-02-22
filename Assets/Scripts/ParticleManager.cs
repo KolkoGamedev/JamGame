@@ -17,5 +17,4 @@ public class ParticleManager : MonoBehaviour
         //For optimize, replace singleton with event argument of gameobject player
         GameObject particle = Instantiate(OnHitParticles, PlayerMovement.Instance.gameObject.transform.position, Quaternion.identity, null);
     }
-
 }

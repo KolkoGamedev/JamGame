@@ -39,6 +39,13 @@ public class PlayerHealth : MonoBehaviour, IHealable, IDamagable
         if (health <= 0)
             OnDie();
     }
+    private void OnDestroy()
+    {
+        OnHeal = delegate { };
+        OnHealthChanged = delegate { };
+        OnHit = delegate { };
+        OnDie = delegate { };
+    }
 }
 
 public interface IDamagable
@@ -50,3 +57,4 @@ public interface IHealable
 {
     void Heal(int value);
 }
+

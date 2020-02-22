@@ -7,6 +7,5 @@ public class HideableWall : MonoBehaviour, IInteractable
     public void Act()
     {
         gameObject.SetActive(false);
-        Debug.Log("ACT");
     }
 }

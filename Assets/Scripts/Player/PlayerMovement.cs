@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
     public static PlayerMovement Instance = null;
@@ -18,13 +19,14 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        rb = GetComponent<Rigidbody2D>();
+        
         _mainCam = Camera.main;
+        DragIndicator.OnDragFinish += Shoot;
     }
 
     private void Start()
     {
-        DragIndicator.OnDragFinish += Shoot;
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void Shoot(Vector3 direction)
@@ -38,4 +40,9 @@ public class PlayerMovement : MonoBehaviour
         OnWallHit();
     }
 
+    private void OnDestroy()
+    {
+        OnShoot = delegate { };
+        OnWallHit = delegate { };
+    }
 }

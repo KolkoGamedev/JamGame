@@ -3,9 +3,10 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuButtonActions : MonoBehaviour
 {
+    [SerializeField] private string levelName = null;
     public void PlayGame()
     {
-        SceneManager.LoadScene("Tutorial");
+        SceneManager.LoadScene(levelName);
     }
 
     public void QuitGame()

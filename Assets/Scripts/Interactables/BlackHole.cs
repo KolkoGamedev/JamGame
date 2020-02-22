@@ -28,4 +28,9 @@ public class BlackHole : MonoBehaviour
         OnTeleport(go);
         playerDissolve.StartPlayerReverseDissolve(go);
     }
+
+    private void OnDestroy()
+    {
+        OnTeleport = delegate { };
+    }
 }
