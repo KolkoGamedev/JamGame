@@ -30,13 +30,14 @@ public class HealthUI : MonoBehaviour
             HeartImgs[heartIndex--].gameObject.SetActive(false);
         }
     }
+
     private void AddHeart(int value)
     {
         if(heartIndex < 3)
         {
             for(int i = 0; i < value; i++)
             {
-                HeartImgs[heartIndex + 1].gameObject.SetActive(true);
+                HeartImgs[heartIndex+1].gameObject.SetActive(true);
             }
         }
     }
