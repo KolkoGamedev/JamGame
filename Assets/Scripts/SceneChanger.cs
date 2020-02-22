@@ -14,7 +14,7 @@ public class SceneChanger : MonoBehaviour
 
     public void Retry()
     {
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("Tutorial");
     }
 
     public void InvokeLoseScreen()

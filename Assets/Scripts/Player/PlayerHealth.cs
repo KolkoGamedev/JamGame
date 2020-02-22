@@ -19,11 +19,12 @@ public class PlayerHealth : MonoBehaviour, IHealable, IDamagable
 
     public void Heal(int value)
     {
-        OnHealthChanged(health);
-        OnHeal(value);
-        
         if (health < maxHealth)
+        {
             health += value;
+            OnHealthChanged(health);
+            OnHeal(value);
+        }
     }
 
     public void TakeDamage(int value)

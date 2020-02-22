@@ -6,6 +6,7 @@ using System;
 public class Medkit : MonoBehaviour
 {
     [SerializeField] private int value = 1;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))

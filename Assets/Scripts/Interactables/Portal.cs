@@ -20,7 +20,6 @@ public class Portal : MonoBehaviour
             }
             else
             {
-                OnLevelComplete();
                 collision.gameObject.GetComponent<Dissolve>().StartPlayerDissolve();
                 Invoke("LoadSceneAfterTime", 2f);
             }
