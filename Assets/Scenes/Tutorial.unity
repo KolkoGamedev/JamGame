@@ -4668,11 +4668,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1705847843465761697, guid: 3d5f7b5eedf45d14c8612578861bc0f2,
-        type: 3}
-      propertyPath: WallLifes
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 2897236438383202904, guid: 3d5f7b5eedf45d14c8612578861bc0f2,
         type: 3}
       propertyPath: m_Name
