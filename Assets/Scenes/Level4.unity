@@ -4562,6 +4562,7 @@ GameObject:
   m_Component:
   - component: {fileID: 710750435}
   - component: {fileID: 710750434}
+  - component: {fileID: 710750436}
   m_Layer: 0
   m_Name: GameplayManager
   m_TagString: Untagged
@@ -4598,6 +4599,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &710750436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 710750433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 492ed0f77fc827243a49949b8e612f41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &724212786
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4950,6 +4963,24 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1705847843465761697, guid: 3d5f7b5eedf45d14c8612578861bc0f2,
+        type: 3}
+      propertyPath: Sprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 9ff76b5def3f46647a4ef90186428873,
+        type: 3}
+    - target: {fileID: 1705847843465761697, guid: 3d5f7b5eedf45d14c8612578861bc0f2,
+        type: 3}
+      propertyPath: Sprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 56adf9522da00514bbcf23cd0476dae6,
+        type: 3}
+    - target: {fileID: 1705847843465761697, guid: 3d5f7b5eedf45d14c8612578861bc0f2,
+        type: 3}
+      propertyPath: Sprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: d4a9b372fa632a1499e6fc3933c9c289,
+        type: 3}
     - target: {fileID: 2897236438383202904, guid: 3d5f7b5eedf45d14c8612578861bc0f2,
         type: 3}
       propertyPath: m_Name
@@ -10489,6 +10520,11 @@ PrefabInstance:
       propertyPath: m_MaskInteraction
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 100655811785662450, guid: c1c3893c4e320984d946d866171e6758,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 100655811785662460, guid: c1c3893c4e320984d946d866171e6758,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10553,6 +10589,11 @@ PrefabInstance:
         type: 3}
       propertyPath: levelToLoad
       value: WinScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 1978005902995282205, guid: c1c3893c4e320984d946d866171e6758,
+        type: 3}
+      propertyPath: isFinish
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1c3893c4e320984d946d866171e6758, type: 3}

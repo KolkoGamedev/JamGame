@@ -25,7 +25,7 @@ public class BlackHole : MonoBehaviour
     private IEnumerator InvokeTeleport(GameObject go, float time)
     {
         yield return new WaitForSeconds(time);
-        OnTeleport(go);
+        OnTeleport?.Invoke(go);
         playerDissolve.StartPlayerReverseDissolve(go);
     }
 
