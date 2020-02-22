@@ -49,3 +49,4 @@ MonoBehaviour:
     type: 3}
   OnWallHitFinal: {fileID: 1704813224738215527, guid: e775ee025c40f2f439fbdb66012c1695,
     type: 3}
+  OnDeath: {fileID: 2056184389900237384, guid: 6af83e80f23e2424da8889be44e97fc3, type: 3}
