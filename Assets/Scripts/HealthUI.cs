@@ -32,7 +32,7 @@ public class HealthUI : MonoBehaviour
     }
     private void AddHeart(int value)
     {
-        if(heartIndex <= 3)
+        if(heartIndex < 3)
         {
             for(int i = 0; i < value; i++)
             {
