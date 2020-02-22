@@ -54,7 +54,8 @@ MonoBehaviour:
   ShieldSound: {fileID: 8300000, guid: 2fdf18422a9cb7d479a50f645e55a784, type: 3}
   ShieldVolume: 0.091
   TeleportSound: {fileID: 8300000, guid: 693fb7cfb18c343459deb304b9641781, type: 3}
-  TeleportVolume: 0.097
+  TeleportVolume: 0.051
   OnButtonClickSound: {fileID: 0}
   OnButtonClickVolume: 0.12
   AS: {fileID: 0}
+  isMuted: 0

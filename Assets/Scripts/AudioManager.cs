@@ -107,7 +107,6 @@ public class AudioManager : MonoBehaviour
 
     private void MuteEffects()
     {
-        Debug.Log("DZIALA");
         AS.mute = true;
         isMuted = true;
         

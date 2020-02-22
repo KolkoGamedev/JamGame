@@ -5992,7 +5992,7 @@ GameObject:
   - component: {fileID: 1940300664}
   - component: {fileID: 1940300663}
   m_Layer: 0
-  m_Name: r
+  m_Name: tip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
