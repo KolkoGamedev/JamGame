@@ -30,6 +30,7 @@ public class MapGenerator : MonoBehaviour
     //Make list of all endings
     private Transform GetPartEndingPoint(GameObject part)
     {
+        //Iterate through children and get their endLevel transforms, add to list
         for(int i = 0; i < part.transform.childCount; i++)
         {
             //_lastSpawnedEndingPoints.Add();
