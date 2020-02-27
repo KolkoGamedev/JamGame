@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class MapGenerator : MonoBehaviour
@@ -13,37 +12,43 @@ public class MapGenerator : MonoBehaviour
     [Space]
     [SerializeField] private int roomCount = 2;
 
-    private List<Transform> _lastSpawnedEndingPoints;
+    private List<Transform> _lastSpawnedEndingPoints = null;
 
     private void Awake()
     {
-        //_lastSpawnedEndingPoints.Add();
-        SpawnMapPart(startingRooms);
+        SpawnMapPart(GetRandomRoomPart(startingRooms), Vector3.zero);
+        GenerateMap();
     }
 
     private GameObject GetRandomRoomPart(List<GameObject> pool)
     {
         return pool[Random.Range(0, pool.Count)];
     }
-    private Transform GetRandomEndPointTransform()
+    private Vector3 GetRandomEndPointTransform()
     {
-        return _lastSpawnedEndingPoints[Random.Range(0, _lastSpawnedEndingPoints.Count)];
+        return _lastSpawnedEndingPoints[Random.Range(0, _lastSpawnedEndingPoints.Count)].transform.position;
     }
-    //todo
-    private void SpawnMapPart(List<GameObject> part)
-    {
-        GameObject _spawned = Instantiate(GetRandomRoomPart(part), GetRandomEndPointTransform().position, Quaternion.identity);
-    }
-
-    private Transform GetPartStartingPoint(GameObject part) => part.GetComponentInChildren<LevelStart>().transform;
-    //Make list of all endings
+    private Vector3 GetPartStartingPoint(GameObject part) => part.GetComponentInChildren<LevelStart>().transform.position;
     private void GetPartEndingPoints(GameObject part)
     {
-        //Can try to change it to for, but will be less clean
-        foreach(GameObject x in part.transform)
+        foreach(Transform x in part.transform)
         {
             _lastSpawnedEndingPoints.Add(x.GetComponent<LevelEnd>().transform);
         }
     }
+    private void SpawnMapPart(GameObject part, Vector3 location)
+    {
+        var spawned = Instantiate(part, location - GetPartStartingPoint(part), Quaternion.identity);
+        GetPartEndingPoints(spawned);
+    }
+    private void GenerateMap()
+    {
+        for (var i = 0; i < roomCount; i++)
+        {
+            SpawnMapPart(GetRandomRoomPart(rooms), GetRandomEndPointTransform());
+        }
+        SpawnMapPart(GetRandomRoomPart(endRooms), GetRandomEndPointTransform());
+    }
+
 
 }

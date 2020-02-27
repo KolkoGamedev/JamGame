@@ -267,7 +267,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingRooms:
   - {fileID: 6214177734248609535, guid: 5450a9ea4c7c02747ae7c800b80b8e9c, type: 3}
-  rooms: []
+  rooms:
+  - {fileID: 3070782939741003289, guid: 94e264a1bcaef2a4684215d927593336, type: 3}
+  - {fileID: 3070782939741003289, guid: 94e264a1bcaef2a4684215d927593336, type: 3}
   connectors:
   - {fileID: 3070782939741003289, guid: 94e264a1bcaef2a4684215d927593336, type: 3}
   bossRooms: []
