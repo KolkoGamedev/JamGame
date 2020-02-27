@@ -13,21 +13,28 @@ public class MapGenerator : MonoBehaviour
     [Space]
     [SerializeField] private int roomCount = 2;
 
-    private void Awake()
-    {
-        if (startingRooms == null)
-            Debug.LogWarning("Fill starting rooms before proceeding!");
-        else
-            SpawnMapPart(GetRandomRoomPart(startingRooms));
-            
-    }
+    private List<Transform> _lastSpawnedEndingPoints;
 
     private GameObject GetRandomRoomPart(List<GameObject> pool)
     {
         return pool[Random.Range(0, pool.Count)];
     }
+
+    //todo
     private void SpawnMapPart(GameObject part)
     {
         GameObject _spawned = Instantiate(part);
     }
+
+    private Transform GetPartStartingPoint(GameObject part) => part.GetComponentInChildren<LevelStart>().transform;
+    //Make list of all endings
+    private Transform GetPartEndingPoint(GameObject part)
+    {
+        for(int i = 0; i < part.transform.childCount; i++)
+        {
+            //_lastSpawnedEndingPoints.Add();
+        }
+       return part.GetComponentInChildren<LevelEnd>().transform;
+    }
+
 }
