@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Hazard
   - Borders
+  - MapTile
+  - LevelEnd
   layers:
   - Default
   - TransparentFX
