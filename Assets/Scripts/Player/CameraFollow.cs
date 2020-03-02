@@ -10,7 +10,7 @@ public class CameraFollow : MonoBehaviour
 
     private Vector3 refPos = Vector3.zero;
 
-    private void Update()
+    private void LateUpdate()
     {
         Vector3 desPos = target.position + offset;
         refPos *= Time.smoothDeltaTime;

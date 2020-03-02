@@ -1,24 +1,16 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class LightManager : MonoBehaviour
 {
-    [SerializeField] private GameObject Mask = null;
-    private Animator playerAnimator;
-    private bool isChanged = false;
-
+    [SerializeField] private GameObject mask = null;
+    private Rigidbody2D rb;
     private void Awake()
     {
-        Portal.OnLevelComplete += ChangeLightSize;
-        PlayerHealth.OnDie += ChangeLightSize;
-        playerAnimator = Mask.GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    public void ChangeLightSize()
-    {
-        isChanged = !isChanged;
 
-        playerAnimator.SetBool("ChangeSize", isChanged);
-    }
 }
