@@ -7,6 +7,7 @@ namespace Menus
     public class PauseMenu : MonoBehaviour
     {
         [SerializeField] private GameObject pauseMenu = null;
+        [SerializeField] private GameObject quitQuestion = null;
         private bool isPaused = false;
 
         void Update()
@@ -24,19 +25,28 @@ namespace Menus
             }
         }
 
-        private void Resume()
+        public void Resume()
         {
             pauseMenu.SetActive(false);
+            quitQuestion.SetActive(false);
             Time.timeScale = 1;
             isPaused = false;
         }
 
-        private void Pause()
+        public void Pause()
         {
             pauseMenu.SetActive(true);
+            quitQuestion.SetActive(false);
             Time.timeScale = 0;
             isPaused = true;
         }
+
+        public void QuitQuestion()
+        {
+            pauseMenu.SetActive(false);
+            quitQuestion.SetActive(true);
+        }
+
     }
 
 }

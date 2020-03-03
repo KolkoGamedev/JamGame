@@ -28,6 +28,11 @@ namespace Managers
         {
             SceneManager.LoadScene("LoseScreen");
         }
+
+        public void QuitGame()
+        {
+            Application.Quit();
+        }
     
     }
 }
