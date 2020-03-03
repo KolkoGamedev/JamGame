@@ -2,42 +2,40 @@
 using UnityEngine.UI;
 using System;
 
-public class SoundButtonScripts : MonoBehaviour
+namespace Menus
 {
-    public static event Action OnMute = delegate { };
-    public static event Action UnMute = delegate { };
-
-    public Button Button;
-    public Sprite Enabled;
-    public Sprite Disabled;
-
-    private bool changer = false;
-
-    private void Start()
+    public class SoundButtonScripts : MonoBehaviour
     {
-        Button = GetComponent<Button>();
-        Button.GetComponent<Image>().sprite = Enabled;
-    }
+        public static event Action OnMute = delegate { };
+        public static event Action OnUnMute = delegate { };
 
-    public void ChangeButton()
-    {
-        if(changer == false)
+        [SerializeField] private Button button = null;
+        [SerializeField] private Sprite buttonEnabled = null;
+        [SerializeField] private Sprite buttonDisabled = null;
+
+        private bool changer = false;
+
+        private void Start()
         {
-            OnMute(); 
-            Button.image.overrideSprite = Disabled;
-            changer = true;
-            //muzyka wylaczona
-            
+            button = GetComponent<Button>();
+            button.GetComponent<Image>().sprite = buttonEnabled;
         }
-        else
+
+        public void ChangeButton()
         {
-            Button.image.overrideSprite = Enabled;
-            //muzyka wlaczona
-            UnMute();
-            changer = false;
+            if(changer == false)
+            {
+                OnMute(); 
+                button.image.overrideSprite = buttonDisabled;
+                changer = true;
+            }
+            else
+            {
+                button.image.overrideSprite = buttonEnabled;
+                OnUnMute();
+                changer = false;
             
+            }
         }
     }
-
-    
 }

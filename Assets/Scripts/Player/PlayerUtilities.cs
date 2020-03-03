@@ -3,42 +3,43 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class PlayerUtilities : MonoBehaviour, IShieldable
+namespace Player
 {
-    public static event Action OnShield = delegate { };
-    public static event Action OnUnShield = delegate { };
-    public bool isShielded { get { return shielded; } set { shielded = value; } }
-    [SerializeField] private bool shielded = false;
-
-    public void Shield()
+    public class PlayerUtilities : MonoBehaviour, IShieldable
     {
-        if(!isShielded)
-        {
-            isShielded = true;
-            OnShield();
-        }
-    }
+        public static event Action OnShield = delegate { };
+        public static event Action OnUnShield = delegate { };
+        public bool IsShielded { get { return shielded; } set { shielded = value; } }
+        [SerializeField] private bool shielded = false;
 
-    public void UnShield()
-    {
-        if(isShielded)
+        public void Shield()
         {
-            isShielded = false;
-            OnUnShield();
+            if(!IsShielded)
+            {
+                IsShielded = true;
+                OnShield();
+            }
         }
+
+        public void UnShield()
+        {
+            if(IsShielded)
+            {
+                IsShielded = false;
+                OnUnShield();
+            }
         
-    }
-    private void OnDestroy()
-    {
-        OnShield = delegate { };
-        OnUnShield = delegate { };
+        }
+        private void OnDestroy()
+        {
+            OnShield = delegate { };
+            OnUnShield = delegate { };
+        }
     }
 }
-
-
 public interface IShieldable
 {
-    bool isShielded { get; set; }
+    bool IsShielded { get; set; }
     void Shield();
     void UnShield();
 

@@ -2,40 +2,44 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TutorialTip : MonoBehaviour
+namespace UI
 {
-    public string Tip;
-    private Tutorial tut;
+    public class TutorialTip : MonoBehaviour
+    {
+        public string tip = null;
+        private Tutorial tut;
 
   
-    private void Awake()
-    {
-        tut = FindObjectOfType<Tutorial>();
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
+        private void Awake()
         {
-            tut.enteredTrigger = true;
-            tut.SetText(Tip);
+            tut = FindObjectOfType<Tutorial>();
         }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                tut.enteredTrigger = true;
+                tut.SetText(tip);
+            }
             
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            tut.enteredTrigger = false;
-            Invoke("TimedClearText", 2.5f);
         }
+
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                tut.enteredTrigger = false;
+                Invoke(nameof(TimedClearText), 2.5f);
+            }
               
+        }
+
+        private void TimedClearText()
+        {
+            if(!tut.enteredTrigger)
+                tut.ClearText();
+        }
     }
 
-    private void TimedClearText()
-    {
-        if(!tut.enteredTrigger)
-        tut.ClearText();
-    }
 }

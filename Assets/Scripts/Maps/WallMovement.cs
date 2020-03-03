@@ -2,29 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WallMovement : MonoBehaviour
+namespace Maps
 {
-    
-    [SerializeField] private float speed = 100f;
-    
-    private void Awake()
+    public class WallMovement : MonoBehaviour
     {
+        [SerializeField] private float speed = 100f;
         
-    }
-
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        Vector3 movement = gameObject.transform.rotation * Vector3.up;
-        transform.position += movement * speed*Time.deltaTime;
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Borders"))
+        void Update()
         {
-            speed = -speed;
+            Vector3 movement = gameObject.transform.rotation * Vector3.up;
+            transform.position += movement * speed * Time.deltaTime;
+        }
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.gameObject.CompareTag("Borders"))
+            {
+                speed = -speed;
+            }
         }
     }
 }
+

@@ -2,18 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DamageDealer : MonoBehaviour
+namespace Interactables
 {
-    [SerializeField] private int Damage = 1;
-    [SerializeField] private int PushbackForce = 300;
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    public class DamageDealer : MonoBehaviour
     {
-        if (collision.gameObject.CompareTag("Player"))
+        [SerializeField] private int damage = 1;
+        [SerializeField] private int pushbackForce = 300;
+
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            collision.gameObject.GetComponent<IDamagable>().TakeDamage(Damage);
-            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-1f,1f), 1f) * PushbackForce);
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                collision.gameObject.GetComponent<Player.IDamagable>().TakeDamage(damage);
+                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-1f,1f), 1f) * pushbackForce);
             
+            }
         }
     }
 }
+

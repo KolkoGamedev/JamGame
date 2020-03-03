@@ -328,7 +328,7 @@ TilemapRenderer:
   m_SortOrder: 0
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
-  m_MaskInteraction: 0
+  m_MaskInteraction: 1
 --- !u!1839735485 &580379385
 Tilemap:
   m_ObjectHideFlags: 0
@@ -2096,7 +2096,7 @@ TilemapRenderer:
   m_SortOrder: 0
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
-  m_MaskInteraction: 0
+  m_MaskInteraction: 1
 --- !u!1839735485 &616675671
 Tilemap:
   m_ObjectHideFlags: 0
@@ -2751,7 +2751,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.20784314, g: 0.21568628, b: 0.33333334, a: 1}
+  m_BackGroundColor: {r: 0.59607846, g: 0.2509804, b: 0.3882353, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -3038,7 +3038,6 @@ GameObject:
   - component: {fileID: 1305351888}
   - component: {fileID: 1305351887}
   - component: {fileID: 1305351886}
-  - component: {fileID: 1305351885}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -3046,20 +3045,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1305351885
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1305351884}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13835557757f9d14fbd1ec4ddaf12d61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mask: {fileID: 1517836119}
-  startingScale: 5
 --- !u!114 &1305351886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3304,7 +3289,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
+  m_MaskInteraction: 1
   m_SpriteSortPoint: 0
 --- !u!4 &1305351894
 Transform:
@@ -3314,8 +3299,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1305351884}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.7, y: 0.07, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 1517836122}
   - {fileID: 1082981880}
@@ -3574,25 +3559,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!95 &1517836120
-Animator:
-  serializedVersion: 3
+--- !u!114 &1517836120
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1517836119}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e41f1bc182f69ae498e0ef7a018057d2, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13835557757f9d14fbd1ec4ddaf12d61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingScale: 5
 --- !u!331 &1517836121
 SpriteMask:
   m_ObjectHideFlags: 0
@@ -3651,7 +3630,7 @@ Transform:
   m_GameObject: {fileID: 1517836119}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 1305351894}
   m_RootOrder: 0

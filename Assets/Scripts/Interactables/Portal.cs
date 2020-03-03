@@ -2,38 +2,42 @@
 using UnityEngine.SceneManagement;
 using System;
 
-public class Portal : MonoBehaviour
+namespace Interactables
 {
-    public static event Action OnLevelComplete = delegate { };
-    [SerializeField] private bool isFinish = false;
-    [SerializeField] private string levelToLoad = null;
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    public class Portal : MonoBehaviour
     {
-        if(collision.gameObject.CompareTag("Player"))
+        public static event Action OnLevelComplete = delegate { };
+        [SerializeField] private bool isFinish = false;
+        [SerializeField] private string levelToLoad = null;
+
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            if(!isFinish)
+            if(collision.gameObject.CompareTag("Player"))
             {
-                OnLevelComplete();
-                collision.gameObject.GetComponent<Dissolve>().StartPlayerDissolve();
-                Invoke("LoadSceneAfterTime", 2f);
-            }
-            else
-            {
-                collision.gameObject.GetComponent<Dissolve>().StartPlayerDissolve();
-                Invoke("LoadSceneAfterTime", 2f);
-            }
+                if(!isFinish)
+                {
+                    OnLevelComplete();
+                    collision.gameObject.GetComponent<Dissolve>().StartPlayerDissolve();
+                    Invoke(nameof(LoadSceneAfterTime), 2f);
+                }
+                else
+                {
+                    collision.gameObject.GetComponent<Dissolve>().StartPlayerDissolve();
+                    Invoke(nameof(LoadSceneAfterTime), 2f);
+                }
             
+            }
+        }
+
+        private void LoadSceneAfterTime()
+        {
+            SceneManager.LoadScene(levelToLoad);
+        }
+
+        private void OnDestroy()
+        {
+            OnLevelComplete = delegate { };
         }
     }
 
-    private void LoadSceneAfterTime()
-    {
-        SceneManager.LoadScene(levelToLoad);
-    }
-
-    private void OnDestroy()
-    {
-        OnLevelComplete = delegate { };
-    }
 }

@@ -3,18 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class Medkit : MonoBehaviour
+namespace Interactables
 {
-    [SerializeField] private int value = 1;
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    public class Medkit : MonoBehaviour
     {
-        if (collision.gameObject.CompareTag("Player"))
+        [SerializeField] private int value = 1;
+
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            collision.gameObject.GetComponent<IHealable>().Heal(value);
-            //gameObject.SetActive(false);
-            GetComponent<Dissolve>().StartDissolve();
-        }
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                collision.gameObject.GetComponent<Player.IHealable>().Heal(value);
+                
+                GetComponent<Dissolve>().StartDissolve();
+            }
         
+        }
     }
+
 }

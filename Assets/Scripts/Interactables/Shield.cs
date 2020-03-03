@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class Shield : MonoBehaviour
+namespace Interactables
 {
-    private void OnTriggerEnter2D(Collider2D collision)
+    public class Shield : MonoBehaviour
     {
-        if (collision.gameObject.CompareTag("Player"))
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            collision.gameObject.GetComponent<IShieldable>().Shield();
-            //gameObject.SetActive(false);
-            GetComponent<Dissolve>().StartDissolve();
-        }
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                collision.gameObject.GetComponent<IShieldable>().Shield();
+                GetComponent<Dissolve>().StartDissolve();
+            }
 
+        }
     }
 }
+

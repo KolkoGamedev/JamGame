@@ -3,34 +3,39 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class BlackHole : MonoBehaviour
+namespace Interactables
 {
-    public static event Action<GameObject> OnTeleport = delegate { };
-    private Dissolve playerDissolve;
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    public class BlackHole : MonoBehaviour
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            if (!playerDissolve)
-            {
-                playerDissolve = collision.gameObject.GetComponent<Dissolve>();
-            }
+        public static event Action<GameObject> OnTeleport = delegate { };
+        private Dissolve playerDissolve;
 
-            playerDissolve.StartPlayerDissolve();
-            StartCoroutine(InvokeTeleport(collision.gameObject, 1f));
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                if (!playerDissolve)
+                {
+                    playerDissolve = collision.gameObject.GetComponent<Dissolve>();
+                }
+
+                playerDissolve.StartPlayerDissolve();
+                StartCoroutine(InvokeTeleport(collision.gameObject, 1f));
+            }
+        }
+
+        private IEnumerator InvokeTeleport(GameObject go, float time)
+        {
+            yield return new WaitForSeconds(time);
+            OnTeleport?.Invoke(go);
+            playerDissolve.StartPlayerReverseDissolve(go);
+        }
+
+        private void OnDestroy()
+        {
+            OnTeleport = delegate { };
         }
     }
 
-    private IEnumerator InvokeTeleport(GameObject go, float time)
-    {
-        yield return new WaitForSeconds(time);
-        OnTeleport?.Invoke(go);
-        playerDissolve.StartPlayerReverseDissolve(go);
-    }
-
-    private void OnDestroy()
-    {
-        OnTeleport = delegate { };
-    }
 }
+

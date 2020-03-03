@@ -3,46 +3,50 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-[RequireComponent(typeof(Rigidbody2D))]
-public class PlayerMovement : MonoBehaviour
+namespace Player
 {
-    public static PlayerMovement Instance = null;
-    public static event Action OnShoot = delegate { };
-    public static event Action OnWallHit = delegate { };
-
-    [SerializeField] private float shootPower = 200;
-    private Vector3 _shootStartingPoint;
-    private Vector3 _shootEndingPoint;
-    private Rigidbody2D rb;
-    private Camera _mainCam;
-
-    private void Awake()
+    [RequireComponent(typeof(Rigidbody2D))]
+    public class PlayerMovement : MonoBehaviour
     {
-        Instance = this;
+        public static PlayerMovement Instance = null;
+        public static event Action OnShoot = delegate { };
+        public static event Action OnWallHit = delegate { };
+
+        [SerializeField] private float shootPower = 200;
+        private Vector3 shootStartingPoint;
+        private Vector3 shootEndingPoint;
+        private Rigidbody2D rb;
+        private Camera mainCam;
+
+        private void Awake()
+        {
+            Instance = this;
         
-        _mainCam = Camera.main;
-        DragIndicator.OnDragFinish += Shoot;
+            mainCam = Camera.main;
+            Visuals.DragIndicator.OnDragFinish += Shoot;
+        }
+
+        private void Start()
+        {
+            rb = GetComponent<Rigidbody2D>();
+        }
+
+        private void Shoot(Vector3 direction)
+        {
+            rb.AddForce(direction * shootPower);
+            OnShoot();
+        }
+
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            OnWallHit();
+        }
+
+        private void OnDestroy()
+        {
+            OnShoot = delegate { };
+            OnWallHit = delegate { };
+        }
     }
 
-    private void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
-
-    private void Shoot(Vector3 direction)
-    {
-        rb.AddForce(direction * shootPower);
-        OnShoot();
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        OnWallHit();
-    }
-
-    private void OnDestroy()
-    {
-        OnShoot = delegate { };
-        OnWallHit = delegate { };
-    }
 }

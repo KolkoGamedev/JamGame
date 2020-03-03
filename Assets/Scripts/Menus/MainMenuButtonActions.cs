@@ -1,16 +1,20 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenuButtonActions : MonoBehaviour
+namespace Menus
 {
-    [SerializeField] private string levelName = null;
-    public void PlayGame()
+    public class MainMenuButtonActions : MonoBehaviour
     {
-        SceneManager.LoadScene(levelName);
+        [SerializeField] private string levelName = null;
+        public void PlayGame()
+        {
+            SceneManager.LoadScene(levelName);
+        }
+
+        public void QuitGame()
+        {
+            Application.Quit();
+        }
     }
 
-    public void QuitGame()
-    {
-        Application.Quit();
-    }
 }

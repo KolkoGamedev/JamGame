@@ -2,47 +2,52 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Maps;
+using Menus;
+using Player;
 using UnityEngine.SceneManagement;
 
-public class AudioManager : MonoBehaviour
+namespace Managers
+{
+    public class AudioManager : MonoBehaviour
 {   
-    [SerializeField] private AudioClip HitSound = null;
+    [SerializeField] private AudioClip hitSound = null;
     [Range(0.0f, 1.0f)]
-    [SerializeField] private float HitVolume = 0;
+    [SerializeField] private float hitVolume = 0;
 
-    [SerializeField] private AudioClip HealSound = null;
+    [SerializeField] private AudioClip healSound = null;
     [Range(0.0f, 1.0f)]
-    [SerializeField] private float HealVolume = 0;
+    [SerializeField] private float healVolume = 0;
 
-    [SerializeField] private AudioClip ShootSound = null;
+    [SerializeField] private AudioClip shootSound = null;
     [Range(0.0f, 1.0f)]
-    [SerializeField] private float ShootVolume = 0;
+    [SerializeField] private float shootVolume = 0;
 
-    [SerializeField] private AudioClip WallHitSound = null;
+    [SerializeField] private AudioClip wallHitSound = null;
     [Range(0.0f, 1.0f)]
-    [SerializeField] private float WallHitVolume = 0;
+    [SerializeField] private float wallHitVolume = 0;
 
-    [SerializeField] private AudioClip ShieldSound = null;
+    [SerializeField] private AudioClip shieldSound = null;
     [Range(0.0f, 1.0f)]
-    [SerializeField] private float ShieldVolume = 0;
+    [SerializeField] private float shieldVolume = 0;
 
-    [SerializeField] private AudioClip TeleportSound = null;
+    [SerializeField] private AudioClip teleportSound = null;
     [Range(0.0f, 1.0f)]
-    [SerializeField] private float TeleportVolume = 0;
+    [SerializeField] private float teleportVolume = 0;
 
-    [SerializeField] private AudioClip OnButtonClickSound = null;
+    [SerializeField] private AudioClip buttonClickSound = null;
     [Range(0.0f, 1.0f)]
-    [SerializeField] private float OnButtonClickVolume = 0;
+    [SerializeField] private float buttonClickVolume = 0;
 
-    [SerializeField] private AudioSource AS = null;
+    [SerializeField] private AudioSource audioSource = null;
 
     [SerializeField] private bool isMuted = false;
     
 
     private void Awake()
     {
-        if (AS == null)
-            AS = FindObjectOfType<AudioSource>();
+        if (audioSource == null)
+            audioSource = FindObjectOfType<AudioSource>();
 
         SetupSounds();
         SceneManager.sceneLoaded += SceneLoaded;
@@ -53,8 +58,8 @@ public class AudioManager : MonoBehaviour
     }
     private void SceneLoaded(Scene x, LoadSceneMode l)
     {
-        if (AS == null)
-            AS = FindObjectOfType<AudioSource>();
+        if (audioSource == null)
+            audioSource = FindObjectOfType<AudioSource>();
 
         SetupSounds();
 
@@ -66,56 +71,58 @@ public class AudioManager : MonoBehaviour
         PlayerHealth.OnHeal += PlayHealSound;
         PlayerMovement.OnShoot += PlayShootSound;
         PlayerMovement.OnWallHit += PlayWallHitSound;
-        PlayerUtilities.OnShield += PlayShieldSound;
+        Player.PlayerUtilities.OnShield += PlayShieldSound;
         Dissolve.OnDissolve += PlayTeleportSound;
         ClickableButton.OnButtonClick += PlayOnButtonClickSound;
         SoundButtonScripts.OnMute += MuteEffects;
-        SoundButtonScripts.UnMute += UnMuteEffects;
+        SoundButtonScripts.OnUnMute += UnMuteEffects;
     }
     private void PlayHitSound(int value)
     {
-        AS.PlayOneShot(HitSound,HitVolume);
+        audioSource.PlayOneShot(hitSound,hitVolume);
     }
 
     private void PlayHealSound(int value)
     {
-        AS.PlayOneShot(HealSound,HealVolume);
+        audioSource.PlayOneShot(healSound,healVolume);
     }
 
     private void PlayShootSound()
     {
-        AS.PlayOneShot(ShootSound,ShootVolume);
+        audioSource.PlayOneShot(shootSound,shootVolume);
     }
     private void PlayWallHitSound()
     {
-        AS.PlayOneShot(WallHitSound,WallHitVolume);
+        audioSource.PlayOneShot(wallHitSound,wallHitVolume);
     }
     private void PlayShieldSound()
     {
-        AS.PlayOneShot(ShieldSound,ShieldVolume);
+        audioSource.PlayOneShot(shieldSound,shieldVolume);
     }
 
     private void PlayTeleportSound()
     {
-        AS.PlayOneShot(TeleportSound,TeleportVolume);
+        audioSource.PlayOneShot(teleportSound,teleportVolume);
     }
 
     private void PlayOnButtonClickSound()
     {
-        AS.PlayOneShot(OnButtonClickSound,OnButtonClickVolume);
+        audioSource.PlayOneShot(buttonClickSound,buttonClickVolume);
     }
 
     private void MuteEffects()
     {
-        AS.mute = true;
+        audioSource.mute = true;
         isMuted = true;
         
     }
 
     private void UnMuteEffects()
     {
-        AS.mute = false;
+        audioSource.mute = false;
         isMuted = false;
     }
 
 }
+}
+

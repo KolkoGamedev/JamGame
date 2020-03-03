@@ -1,25 +1,28 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class ChangeButtonSprite : MonoBehaviour
+namespace Menus
 {
-    public Button button;
-    public Sprite BeforeHoover;
-    public Sprite WhileHoover;
-
-    private void Start()
+    public class ChangeButtonSprite : MonoBehaviour
     {
-        button = GetComponent<Button>();
-        button.GetComponent<Image>().sprite = BeforeHoover;
-    }
+        public Button button;
+        public Sprite beforeHover;
+        public Sprite whileHover;
 
-    public void ChangeToDefaultSprite()
-    {
-        button.image.overrideSprite = BeforeHoover;
-    }
+        private void Start()
+        {
+            button = GetComponent<Button>();
+            button.GetComponent<Image>().sprite = beforeHover;
+        }
 
-    public void ChangeToBrokenSprite()
-    {
-        button.image.overrideSprite = WhileHoover;
+        public void ChangeToDefaultSprite()
+        {
+            button.image.overrideSprite = beforeHover;
+        }
+
+        public void ChangeToBrokenSprite()
+        {
+            button.image.overrideSprite = whileHover;
+        }
     }
 }

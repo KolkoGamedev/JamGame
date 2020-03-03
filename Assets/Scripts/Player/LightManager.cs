@@ -4,27 +4,26 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
-public class LightManager : MonoBehaviour
+namespace Player
 {
-    [SerializeField] private GameObject mask = null;
-    [SerializeField] private int startingScale = 5;
-    private Rigidbody2D rb;
-    private void Awake()
+    public class LightManager : MonoBehaviour
     {
-        rb = GetComponent<Rigidbody2D>();
-    }
-    private void Start()
-    {
-        PlayerMovement.OnShoot += StartChangingSize;
-    }
-    private void StartChangingSize()
-    {
-        float x = startingScale + rb.velocity.magnitude;
-        mask.transform.DOScale(new Vector3(x, x, x), .5f);
-    }
+        [SerializeField] private int startingScale = 5;
+        private void Start()
+        {
+            Visuals.DragIndicator.OnDragFinish += StartChangingSize;
+            PlayerMovement.OnWallHit += GoBack;
+        }
+        private void StartChangingSize(Vector3 power)
+        {
+            var x = startingScale + power.magnitude;
+            gameObject.transform.DOScale(new Vector3(x, x, x), .5f);
+        }
 
-    private void GoBack()
-    {
-        mask.transform.DOScale(new Vector3(5f, 5f, 5f), 3f);
+        private void GoBack()
+        {
+            gameObject.transform.DOScale(new Vector3(5f, 5f, 5f), .5f);
+        }
     }
 }
+

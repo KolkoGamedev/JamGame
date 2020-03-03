@@ -1,41 +1,47 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Maps;
+using Player;
 using UnityEngine;
 
-public class ParticleManager : MonoBehaviour
+namespace Managers
 {
-    [SerializeField] private GameObject OnHitParticles = null;
-    [SerializeField] private GameObject OnWallHitStep = null;
-    [SerializeField] private GameObject OnWallHitFinal = null;
-    [SerializeField] private GameObject OnDeath = null;
+    public class ParticleManager : MonoBehaviour
+    {
+        [SerializeField] private GameObject onHitParticles = null;
+        [SerializeField] private GameObject onWallHitStep = null;
+        [SerializeField] private GameObject onWallHitFinal = null;
+        [SerializeField] private GameObject onDeath = null;
 
-    private void Awake()
-    {
-        PlayerHealth.OnHit += SpawnOnHitParticles;
-        DestroyableWall.OnWallAttack += SpawnOnWallHitStepParticles;
-        PlayerHealth.OnDie += SpawnOnDeathParticles;
-    }
-
-    private void SpawnOnHitParticles(int v)
-    {
-        //For optimize, replace singleton with event argument of gameobject player
-        GameObject particle = Instantiate(OnHitParticles, PlayerMovement.Instance.gameObject.transform.position, Quaternion.identity, null);
-    }
-    private void SpawnOnWallHitStepParticles(int health, GameObject x)
-    {
-        if(health != 0)
+        private void Awake()
         {
-            GameObject particle = Instantiate(OnWallHitStep, PlayerMovement.Instance.gameObject.transform.position, Quaternion.identity, null);
+            PlayerHealth.OnHit += SpawnOnHitParticles;
+            DestroyableWall.OnWallAttack += SpawnOnWallHitStepParticles;
+            PlayerHealth.OnDie += SpawnOnDeathParticles;
         }
-        else
+
+        private void SpawnOnHitParticles(int v)
         {
-            GameObject particle = Instantiate(OnWallHitFinal, x.gameObject.transform.position, Quaternion.identity, null);
+            //For optimize, replace singleton with event argument of gameobject player
+            var particle = Instantiate(onHitParticles, PlayerMovement.Instance.gameObject.transform.position, Quaternion.identity, null);
         }
-    }
+        private void SpawnOnWallHitStepParticles(int health, GameObject x)
+        {
+            if(health != 0)
+            {
+                var particle = Instantiate(onWallHitStep, PlayerMovement.Instance.gameObject.transform.position, Quaternion.identity, null);
+            }
+            else
+            {
+                var particle = Instantiate(onWallHitFinal, x.gameObject.transform.position, Quaternion.identity, null);
+            }
+        }
 
-    private void SpawnOnDeathParticles()
-    {
-        GameObject particle = Instantiate(OnDeath, PlayerMovement.Instance.gameObject.transform.position, Quaternion.identity, null);
-    }
+        private void SpawnOnDeathParticles()
+        {
+            var particle = Instantiate(onDeath, PlayerMovement.Instance.gameObject.transform.position, Quaternion.identity, null);
+        }
 
+    }
 }
+

@@ -3,40 +3,44 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class DestroyableWall : MonoBehaviour
+namespace Maps
 {
-    [SerializeField] private int WallLifes = 3;
-    [SerializeField] private List<Sprite> Sprites = null;
-
-    public static event Action<int, GameObject> OnWallAttack = delegate { };
-    private SpriteRenderer sr;
-
-    private void Awake()
+    public class DestroyableWall : MonoBehaviour
     {
-        sr = GetComponent<SpriteRenderer>();
-    }
+        [SerializeField] private int wallLifes = 3;
+        [SerializeField] private List<Sprite> sprites = null;
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
+        public static event Action<int, GameObject> OnWallAttack = delegate { };
+        private SpriteRenderer sr;
+
+        private void Awake()
         {
-            Damaged();
-            sr.sprite = Hit();
+            sr = GetComponent<SpriteRenderer>();
         }
-    }
-    private Sprite Hit()
-    {
-        return Sprites[WallLifes];
-    }
 
-    private void Damaged()
-    {
-        WallLifes--;
-        OnWallAttack(WallLifes, gameObject);
-        if(WallLifes == 0)
+        private void OnCollisionEnter2D(Collision2D collision)
         {
-            gameObject.SetActive(false);
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                Damaged();
+                sr.sprite = Hit();
+            }
         }
-    }
+        private Sprite Hit()
+        {
+            return sprites[wallLifes];
+        }
 
+        private void Damaged()
+        {
+            wallLifes--;
+            OnWallAttack(wallLifes, gameObject);
+            if(wallLifes == 0)
+            {
+                gameObject.SetActive(false);
+            }
+        }
+
+    }
 }
+

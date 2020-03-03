@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HideableWall : MonoBehaviour, IInteractable
+namespace Maps
 {
-    public void Act()
+    public class HideableWall : MonoBehaviour, IInteractable
     {
-        gameObject.SetActive(false);
+        public void Act()
+        {
+            gameObject.SetActive(false);
+        }
     }
 }
+

@@ -3,26 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class GameplayManager : MonoBehaviour
+namespace Managers
 {
-    [SerializeField] private Transform _spawnPoint = null;
-    [SerializeField] private GameObject AudioManagerPrefab = null;
-
-    private void Start()
+    public class GameplayManager : MonoBehaviour
     {
-        BlackHole.OnTeleport += TeleportToSpawn;
-        if (FindObjectOfType<AudioManager>() == null)
+        [SerializeField] private Transform spawnPoint = null;
+        [SerializeField] private GameObject audioManagerPrefab = null;
+
+        private void Start()
         {
-            Instantiate(AudioManagerPrefab, Vector3.zero, Quaternion.identity);
+            Interactables.BlackHole.OnTeleport += TeleportToSpawn;
+            if (FindObjectOfType<AudioManager>() == null)
+            {
+                Instantiate(audioManagerPrefab, Vector3.zero, Quaternion.identity);
+            }
+        }
+
+        private void TeleportToSpawn(GameObject player)
+        { 
+            player.gameObject.transform.position = spawnPoint.transform.position;
+            player.GetComponent<TrailRenderer>().Clear();
+            player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         }
     }
-
-    private void TeleportToSpawn(GameObject player)
-    { 
-        player.gameObject.transform.position = _spawnPoint.transform.position;
-        player.GetComponent<TrailRenderer>().Clear();
-        player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-    }
-
-
 }
+

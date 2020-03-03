@@ -5,26 +5,26 @@ using UnityEngine;
 using UnityEngine.Rendering.UI;
 using Random = UnityEngine.Random;
 
-[RequireComponent(typeof(Rooms))]
-[RequireComponent(typeof(EndingRooms))]
+[RequireComponent(typeof(Maps.Rooms))]
+[RequireComponent(typeof(Maps.EndingRooms))]
 public partial class MapGenerator : MonoBehaviour
 {
     [SerializeField] private int roomCount = 2;
     [SerializeField] private bool shouldMapHaveBoss = false;
     
-    public List<LevelEnd> partEnds = new List<LevelEnd>();
+    public List<Maps.LevelEnd> partEnds = new List<Maps.LevelEnd>();
     
     private int portalCount = 1;
-    private Rooms rooms = null;
-    private BossRooms bossRooms = null;
-    private EndingRooms endingRooms = null;
+    private Maps.Rooms rooms = null;
+    private Maps.BossRooms bossRooms = null;
+    private Maps.EndingRooms endingRooms = null;
     private void Awake()
     {
         if (shouldMapHaveBoss)
-            bossRooms = GetComponent<BossRooms>();
+            bossRooms = GetComponent<Maps.BossRooms>();
         
-        rooms = GetComponent<Rooms>();
-        endingRooms = GetComponent<EndingRooms>();
+        rooms = GetComponent<Maps.Rooms>();
+        endingRooms = GetComponent<Maps.EndingRooms>();
         
         //Get Ending Portal count
         portalCount += GetPortalCount();
@@ -148,13 +148,13 @@ public partial class MapGenerator : MonoBehaviour
     {
         for (var i = 0; i < spawned.transform.childCount; i++)
         {
-            if (!spawned.transform.GetChild(i).GetComponent<LevelEnd>()) continue;
-            partEnds.Add(spawned.transform.GetChild(i).GetComponent<LevelEnd>());
+            if (!spawned.transform.GetChild(i).GetComponent<Maps.LevelEnd>()) continue;
+            partEnds.Add(spawned.transform.GetChild(i).GetComponent<Maps.LevelEnd>());
             
         }
     }
     private GameObject RandomOf(List<GameObject> list) => list[Random.Range(0, list.Count)];
-    private LevelEnd RandomOf(List<LevelEnd> list) => list[Random.Range(0, list.Count)];
+    private Maps.LevelEnd RandomOf(List<Maps.LevelEnd> list) => list[Random.Range(0, list.Count)];
     private int GetPortalCount()
     {
         var counter = 0;

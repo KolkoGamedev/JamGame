@@ -1,29 +1,34 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneChanger : MonoBehaviour
+namespace Managers
 {
-    private void Awake()
+    public class SceneChanger : MonoBehaviour
     {
-        PlayerHealth.OnDie += InvokeLoseScreen;
-    }
-    public void MainMenu()
-    {
-        SceneManager.LoadScene("MainMenu");
-    }
+        //change to gamemanager
+        private void Awake()
+        {
+            Player.PlayerHealth.OnDie += InvokeLoseScreen;
+        }
+        public void MainMenu()
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
 
-    public void Retry()
-    {
-        SceneManager.LoadScene("Tutorial");
-    }
+        public void Retry()
+        {
+            SceneManager.LoadScene("Tutorial");
+        }
 
-    public void InvokeLoseScreen()
-    {
-        Invoke("LoadLoseScreen", 1.5f);
-    }
-    private void LoadLoseScreen()
-    {
-        SceneManager.LoadScene("LoseScreen");
-    }
+        public void InvokeLoseScreen()
+        {
+            Invoke(nameof(LoadLoseScreen), 1.5f);
+        }
+        private void LoadLoseScreen()
+        {
+            SceneManager.LoadScene("LoseScreen");
+        }
     
+    }
 }
+
