@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace Menus
 {
@@ -8,7 +10,26 @@ namespace Menus
     {
         [SerializeField] private GameObject pauseMenu = null;
         [SerializeField] private GameObject quitQuestion = null;
+        [SerializeField] private Button ContinueButton = null;
+        [SerializeField] private Button MainMenuButton = null;
+        [SerializeField] private Button QuitGameButton = null;
+        [SerializeField] private Button YesButton = null;
+        [SerializeField] private Button NoButton = null;
         private bool isPaused = false;
+
+
+
+
+        void Start()
+        {
+            ContinueButton.onClick.AddListener(Resume);
+            MainMenuButton.onClick.AddListener(SceneChange);
+            QuitGameButton.onClick.AddListener(QuitQuestion);
+            YesButton.onClick.AddListener(Quit);
+            NoButton.onClick.AddListener(Pause);
+        }
+
+
 
         void Update()
         {
@@ -45,6 +66,16 @@ namespace Menus
         {
             pauseMenu.SetActive(false);
             quitQuestion.SetActive(true);
+        }
+
+        public void SceneChange()
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
+
+        public void Quit()
+        {
+            Application.Quit();
         }
 
     }
