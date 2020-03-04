@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Maps;
 using UnityEngine;
 using UnityEngine.Rendering.UI;
 using Random = UnityEngine.Random;
@@ -11,13 +12,12 @@ public partial class MapGenerator : MonoBehaviour
 {
     [SerializeField] private int roomCount = 2;
     [SerializeField] private bool shouldMapHaveBoss = false;
-    
-    public List<Maps.LevelEnd> partEnds = new List<Maps.LevelEnd>();
+    public List<LevelEnd> partEnds = new List<LevelEnd>();
     
     private int portalCount = 1;
-    private Maps.Rooms rooms = null;
-    private Maps.BossRooms bossRooms = null;
-    private Maps.EndingRooms endingRooms = null;
+    private Rooms rooms = null;
+    private BossRooms bossRooms = null;
+    private EndingRooms endingRooms = null;
     private void Awake()
     {
         if (shouldMapHaveBoss)
@@ -46,10 +46,15 @@ public partial class MapGenerator : MonoBehaviour
         }
         StartCoroutine(GenerateMapEndings());
     }
-
     private IEnumerator GenerateMapEndings()
     {
-        if (!shouldMapHaveBoss)
+        if (shouldMapHaveBoss)
+        {
+            var rolledPartEnd = RandomOf(partEnds);
+            SpawnMapPart(GetRandomMapPart(rolledPartEnd.whatDoorDoINeed, true), rolledPartEnd.transform.position);
+            yield return new WaitForSeconds(.2f);
+        }
+        else
         {
             for (var i = 0; i < portalCount; i++)
             {
@@ -57,15 +62,14 @@ public partial class MapGenerator : MonoBehaviour
                 SpawnMapPart(GetRandomMapPart(rolledPartEnd.whatDoorDoINeed, true, true), rolledPartEnd.transform.position);
                 yield return new WaitForSeconds(.2f);
             }
-            
-            while(partEnds.Count > 0)
-            {
-                var rolledPartEnd = RandomOf(partEnds);
-                SpawnMapPart(GetRandomMapPart(rolledPartEnd.whatDoorDoINeed, true, false), rolledPartEnd.transform.position);
-                yield return new WaitForSeconds(.2f);
-            }
         }
-        //if boss exists
+        while(partEnds.Count > 0)
+        {
+            var rolledPartEnd = RandomOf(partEnds);
+            SpawnMapPart(GetRandomMapPart(rolledPartEnd.whatDoorDoINeed, true, false), rolledPartEnd.transform.position);
+            yield return new WaitForSeconds(.2f);
+        }
+        
     }
     private void SpawnMapPart(GameObject part, Vector3 location)
     {
@@ -98,6 +102,39 @@ public partial class MapGenerator : MonoBehaviour
                         return RandomOf(rooms.left);
                     case 0:
                         return RandomOf(rooms.top);
+                    default:
+                        return null;
+                }
+            }
+            default:
+                return null;
+        }
+    }
+    private GameObject GetRandomMapPart(NeedDoor doorNeeded, bool isBoss)
+    {
+        switch (doorNeeded)
+        {
+            case NeedDoor.Top:
+                return RandomOf(bossRooms.top);
+            case NeedDoor.Right:
+                return RandomOf(bossRooms.right);
+            case NeedDoor.Bottom:
+                return RandomOf(bossRooms.bottom);
+            case NeedDoor.Left:
+                return RandomOf(bossRooms.left);
+            case NeedDoor.Random:
+            {
+                var rnd = Random.Range(0, 4);
+                switch (rnd)
+                {
+                    case 3:
+                        return RandomOf(bossRooms.right);
+                    case 2:
+                        return RandomOf(bossRooms.bottom);
+                    case 1:
+                        return RandomOf(bossRooms.left);
+                    case 0:
+                        return RandomOf(bossRooms.top);
                     default:
                         return null;
                 }
@@ -153,8 +190,10 @@ public partial class MapGenerator : MonoBehaviour
             
         }
     }
-    private GameObject RandomOf(List<GameObject> list) => list[Random.Range(0, list.Count)];
-    private Maps.LevelEnd RandomOf(List<Maps.LevelEnd> list) => list[Random.Range(0, list.Count)];
+    private T RandomOf<T>(List<T> list)
+    {
+        return list[Random.Range(0, list.Count)];
+    }
     private int GetPortalCount()
     {
         var counter = 0;
