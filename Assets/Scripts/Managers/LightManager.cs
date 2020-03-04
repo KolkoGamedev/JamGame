@@ -4,15 +4,15 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
-namespace Player
+namespace Managers
 {
     public class LightManager : MonoBehaviour
     {
         [SerializeField] private int startingScale = 5;
         private void Start()
         {
-            Visuals.DragIndicator.OnDragFinish += StartChangingSize;
-            PlayerMovement.OnWallHit += GoBack;
+            Player.Visuals.DragIndicator.OnDragFinish += StartChangingSize;
+            Player.PlayerMovement.OnWallHit += GoBack;
         }
         private void StartChangingSize(Vector3 power)
         {
