@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 namespace Player
 {
@@ -8,7 +9,7 @@ namespace Player
         public static event Action<int> OnHealthChanged = delegate { };
         public static event Action<int> OnHeal = delegate { };
         public static event Action<int> OnHit = delegate { };
-        public static event Action OnDie = delegate { };
+        public static event Action<string> OnDie = delegate { };
 
         public int health = 3;
         public int maxHealth = 3;
@@ -46,7 +47,7 @@ namespace Player
 
             if (health <= 0)
             {
-                OnDie();
+                OnDie(SceneManager.GetActiveScene().name);
                 PlayerDeath();
             }
             
