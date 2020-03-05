@@ -43,10 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 632f3e388babebe4bbd132a47f141e68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnHitParticles: {fileID: 8345857287719043012, guid: 6b3c491f91c2d194482c9be48ccb30bc,
+  onHitParticles: {fileID: 8345857287719043012, guid: 6b3c491f91c2d194482c9be48ccb30bc,
     type: 3}
-  OnWallHitStep: {fileID: 2528806042482941395, guid: b157a149de9f23141afb6e14d072c476,
-    type: 3}
-  OnWallHitFinal: {fileID: 1704813224738215527, guid: e775ee025c40f2f439fbdb66012c1695,
-    type: 3}
-  OnDeath: {fileID: 2056184389900237384, guid: 6af83e80f23e2424da8889be44e97fc3, type: 3}
+  onWallHitStep: {fileID: 0}
+  onWallHitFinal: {fileID: 0}
+  onDeath: {fileID: 2056184389900237384, guid: 6af83e80f23e2424da8889be44e97fc3, type: 3}

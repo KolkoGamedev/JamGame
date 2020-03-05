@@ -1,12 +1,24 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance { get; private set; }
+    public string playerDeathLevel = null;
     private void Awake()
     {
-        Player.PlayerHealth.OnDie += InvokeLoseScreen;
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        
+        DontDestroyOnLoad(gameObject);
+        Player.PlayerHealth.OnDie += DeathScreen;
     }
 
     public void SwitchScene(string sceneName)
@@ -14,15 +26,15 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
     
-    // Brakuje funkcji, która będzie robić retry poziomu, który zjebaliśmy
-
-    public void InvokeLoseScreen()
+    public void DeathScreen(string sceneName)
     {
-        Invoke(nameof(LoadLoseScreen), 1.5f);
-    }
-    private void LoadLoseScreen()
-    {
+        playerDeathLevel = sceneName;
         SceneManager.LoadScene("LoseScreen");
+    }
+
+    public void RetryLevel()
+    {
+        SceneManager.LoadScene(playerDeathLevel);
     }
 
     public void QuitApplication()

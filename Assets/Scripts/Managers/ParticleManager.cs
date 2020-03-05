@@ -37,7 +37,7 @@ namespace Managers
             }
         }
 
-        private void SpawnOnDeathParticles()
+        private void SpawnOnDeathParticles(string sceneName)
         {
             var particle = Instantiate(onDeath, PlayerMovement.Instance.gameObject.transform.position, Quaternion.identity, null);
         }
